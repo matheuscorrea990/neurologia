@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano de Estudos — Neurologia · 30 Semanas</title>
+<style>
+  :root {
+    --bg: #0B0F1A;
+    --bg2: #111827;
+    --bg3: #1a2235;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #E8EDF5;
+    --text2: #8A95A8;
+    --text3: #555F70;
+    --blue: #4A90D9;
+    --blue-d: #1A3A6B;
+    --blue-l: #7BB3E8;
+    --teal: #2EC4A6;
+    --teal-d: #0C4A3E;
+    --teal-l: #6EDEC9;
+    --purple: #8B6FD4;
+    --purple-d: #2C1F5A;
+    --purple-l: #B8A4E8;
+    --amber: #E8A845;
+    --amber-d: #4A320D;
+    --amber-l: #F5C87A;
+    --red: #E05C5C;
+    --red-d: #4A1A1A;
+    --green: #52B788;
+    --green-d: #143D25;
+    --green-l: #86D4AB;
+    --coral: #E07A5F;
+    --coral-d: #4A2015;
+    --week-colors: #4A90D9, #2EC4A6, #8B6FD4, #E8A845, #E05C5C, #52B788;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 56px;
+  }
+  .logo {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+  .header-sep { color: var(--text3); }
+  .header-title { font-size: 0.9rem; color: var(--text2); }
+  .header-right { margin-left: auto; display: flex; gap: 0.5rem; }
+  .badge {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .badge-blue { background: rgba(74,144,217,0.15); color: var(--blue-l); border: 1px solid rgba(74,144,217,0.3); }
+  .badge-teal { background: rgba(46,196,166,0.15); color: var(--teal-l); border: 1px solid rgba(46,196,166,0.3); }
+  .badge-amber { background: rgba(232,168,69,0.15); color: var(--amber-l); border: 1px solid rgba(232,168,69,0.3); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 4rem 2rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 0.75rem;
+  }
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--blue);
+  }
+  .hero-sub {
+    color: var(--text2);
+    font-size: 1.05rem;
+    max-width: 520px;
+    margin-bottom: 2rem;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+  }
+  .stat { }
+  .stat-n {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .stat-l {
+    font-size: 0.75rem;
+    color: var(--text2);
+    margin-top: 3px;
+  }
+  .hero-card {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 16px;
+    padding: 1.5rem;
+  }
+  .hero-card-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 1rem;
+  }
+  .source-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.875rem;
+  }
+  .source-row:last-child { border-bottom: none; }
+  .source-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .source-name { font-weight: 500; }
+  .source-sub { font-size: 0.75rem; color: var(--text2); }
+
+  /* ── EXAM ANALYSIS ── */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+  .section-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+  }
+  .exam-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .exam-cell {
+    background: var(--bg2);
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .exam-area { font-size: 0.8rem; font-weight: 500; color: var(--text2); }
+  .exam-count { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.04em; }
+  .exam-bar-bg {
+    height: 3px;
+    background: var(--border2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .exam-bar { height: 100%; border-radius: 2px; }
+
+  /* ── BLOCKS OVERVIEW ── */
+  .blocks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .block-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .block-card:hover {
+    border-color: var(--border2);
+    background: var(--bg3);
+  }
+  .block-num {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .block-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .block-weeks { font-size: 0.75rem; color: var(--text2); margin-bottom: 0.75rem; }
+  .block-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  /* ── WEEKLY PLAN ── */
+  .week-filter {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .filter-btn {
+    font-size: 0.75rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.12s;
+    font-family: inherit;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--bg3);
+    color: var(--text);
+    border-color: var(--blue);
+  }
+
+  .weeks-list { display: flex; flex-direction: column; gap: 1rem; }
+  .week-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .week-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  .week-header:hover { background: var(--bg3); }
+  .week-num-badge {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .week-info { flex: 1; }
+  .week-title { font-size: 0.9rem; font-weight: 600; }
+  .week-sub { font-size: 0.75rem; color: var(--text2); margin-top: 1px; }
+  .week-meta { display: flex; gap: 0.5rem; flex-shrink: 0; }
+  .week-chevron {
+    color: var(--text3);
+    font-size: 0.8rem;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .week-item.open .week-chevron { transform: rotate(180deg); }
+
+  .week-sessions {
+    display: none;
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .week-item.open .week-sessions { display: block; }
+
+  .session-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 120px 180px 140px;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.8rem;
+  }
+  .session-row:last-child { border-bottom: none; }
+  .session-row.header-row {
+    background: rgba(255,255,255,0.03);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text3);
+  }
+  .sc { padding: 0.65rem 1rem; border-right: 1px solid var(--border); }
+  .sc:last-child { border-right: none; }
+  .sc-num { font-weight: 700; color: var(--text2); }
+  .sc-title { font-weight: 500; }
+  .sc-note { font-size: 0.72rem; color: var(--text2); margin-top: 2px; }
+  .sc-abn { font-family: 'Courier New', monospace; font-size: 0.75rem; color: var(--teal); }
+  .sc-aan { color: var(--blue); font-size: 0.75rem; }
+  .sc-prova { color: var(--purple-l); font-size: 0.75rem; font-weight: 500; }
+
+  /* ── APPENDIX ── */
+  .append-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .append-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .append-card-head {
+    padding: 0.75rem 1rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .append-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.8rem;
+  }
+  .append-row:last-child { border-bottom: none; }
+  .append-code {
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    color: var(--blue);
+    flex-shrink: 0;
+    min-width: 40px;
+  }
+  .append-name { flex: 1; color: var(--text); }
+  .append-week { color: var(--text3); font-size: 0.72rem; flex-shrink: 0; white-space: nowrap; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    color: var(--text3);
+    font-size: 0.8rem;
+  }
+
+  /* ── PROGRESS TRACKER ── */
+  .progress-section {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .progress-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .progress-label { font-size: 0.8rem; color: var(--text2); width: 120px; flex-shrink: 0; }
+  .progress-bar-bg {
+    flex: 1;
+    height: 6px;
+    background: var(--border2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+  .progress-pct { font-size: 0.8rem; font-weight: 700; width: 36px; text-align: right; flex-shrink: 0; }
+
+  .week-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 1px solid var(--border2);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.12s, border-color 0.12s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    background: transparent;
+  }
+  .week-check.done {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero > :last-child { display: none; }
+    h1 { font-size: 2rem; }
+    .session-row { grid-template-columns: 1fr; }
+    .session-row.header-row { display: none; }
+    .sc { border-right: none; }
+    .append-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="logo">Neuro</span>
+  <span class="header-sep">·</span>
+  <span class="header-title">Plano de Estudos 30 Semanas</span>
+  <div class="header-right">
+    <span class="badge badge-blue">ABN 3ª ed.</span>
+    <span class="badge badge-teal">AAN 2026</span>
+    <span class="badge badge-amber">Título 2025</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section style="max-width:1100px;margin:0 auto;padding:4rem 2rem 3rem;">
+  <div class="hero" style="display:grid;grid-template-columns:1fr 300px;gap:3rem;align-items:center;padding:0;">
+    <div>
+      <p class="hero-eyebrow">Residência em Neurologia · UNIFESP</p>
+      <h1>Formação do<br><em>Neurologista Geral</em></h1>
+      <p class="hero-sub">30 minutos por dia, 5 dias por semana, ao longo de 30 semanas. Cada sessão articula o Tratado da ABN, as aulas do Congresso da AAN 2026 e os gabaritos da Prova de Título 2025.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-n" style="color:var(--blue)">150</div>
+          <div class="stat-l">sessões de estudo</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n" style="color:var(--teal)">102</div>
+          <div class="stat-l">questões gabaritadas</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n" style="color:var(--amber)">11</div>
+          <div class="stat-l">blocos temáticos</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">Fontes de referência</div>
+      <div class="source-row">
+        <div class="source-icon" style="background:rgba(46,196,166,0.12);color:var(--teal)">📚</div>
+        <div>
+          <div class="source-name">Tratado ABN</div>
+          <div class="source-sub">3ª edição, 2025 · 210 caps.</div>
+        </div>
+      </div>
+      <div class="source-row">
+        <div class="source-icon" style="background:rgba(74,144,217,0.12);color:var(--blue)">🎓</div>
+        <div>
+          <div class="source-name">AAN Annual Meeting 2026</div>
+          <div class="source-sub">Programação completa · 1h30/aula</div>
+        </div>
+      </div>
+      <div class="source-row">
+        <div class="source-icon" style="background:rgba(139,111,212,0.12);color:var(--purple)">📝</div>
+        <div>
+          <div class="source-name">Prova de Título 2025</div>
+          <div class="source-sub">102 questões gabaritadas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXAM ANALYSIS -->
+<section class="section" style="padding-top:1rem;">
+  <div class="section-eyebrow">Análise · Prova de Título 2025</div>
+  <h2>Distribuição das 102 questões</h2>
+  <div class="exam-grid">
+    <div class="exam-cell">
+      <div class="exam-area">Neuromuscular</div>
+      <div class="exam-count" style="color:var(--purple)">14</div>
+      <div class="exam-bar-bg"><div class="exam-bar" style="width:100%;background:var(--purple)"></div></div>
+    </div>
+    <div class="exam-cell">
+      <div class="exam-area">Neuroimunologia</div>
+      <div class="exam-count" style="color:var(--blue)">12</div>
+      <div class="exam-bar-bg"><div class="exam-bar" style="width:85%;background:var(--blue)"></div></div>
+    </div>
+    <div class="exam-cell">
+      <div class="exam-area">Distúrbios do Movimento</div>
+      <div class="exam-count" style="color:var(--teal)">10</div>
+      <div class="exam-bar-bg"><div class="exam-bar" style="width:71%;background:var(--teal)"></div></div>
+    </div>
+    <div class="exam-cell">
+      <div class="exam-area">AVC</div>
+      <div class="exam-count" style="color:var(--green)">10</div>
+      <div class="exam-bar-bg"><div class="exam-bar" style="width:71%;background:var(--green)"></div></div>
+    </div>
+    <div class="exam-cell">
+      <div class="exam-area">Epilepsia</div>
+      <div class="exam-count" style="color:var(--amber)">9</div>
+      <div class="exam-bar-bg"><div class="exam-bar" style="width:64%;background:var(--amber)"></div></div>
+    </div>
+    <div class="exam-cell">
+      <div class="exam-area">Cefaleias</div>
+      <div class="exam-count" style="color:var(--coral)">9</div>
+      <div class="exam-bar-bg"><div class="exam-bar" style="width:64%;background:var(--coral)"></div></div>
+    </div>
+    <div class="exam-cell">
+      <div class="exam-area">Neurologia Cognitiva</div>
+      <div class="exam-count" style="color:#C084FC">9</div>
+      <div class="exam-bar-bg"><div class="exam-bar" style="width:64%;background:#C084FC"></div></div>
+    </div>
+    <div class="exam-cell">
+      <div class="exam-area">Neuro-oftalmologia</div>
+      <div class="exam-count" style="color:var(--blue-l)">8</div>
+      <div class="exam-bar-bg"><div class="exam-bar" style="width:57%;background:var(--blue-l)"></div></div>
+    </div>
+    <div class="exam-cell">
+      <div class="exam-area">Transtornos do Sono</div>
+      <div class="exam-count" style="color:var(--teal-l)">7</div>
+      <div class="exam-bar-bg"><div class="exam-bar" style="width:50%;background:var(--teal-l)"></div></div>
+    </div>
+    <div class="exam-cell">
+      <div class="exam-area">Neuroinfecção</div>
+      <div class="exam-count" style="color:var(--red)">6</div>
+      <div class="exam-bar-bg"><div class="exam-bar" style="width:43%;background:var(--red)"></div></div>
+    </div>
+    <div class="exam-cell">
+      <div class="exam-area">Semiologia / Anatomia</div>
+      <div class="exam-count" style="color:var(--text2)">5</div>
+      <div class="exam-bar-bg"><div class="exam-bar" style="width:36%;background:var(--text2)"></div></div>
+    </div>
+    <div class="exam-cell">
+      <div class="exam-area">Outros</div>
+      <div class="exam-count" style="color:var(--text3)">3</div>
+      <div class="exam-bar-bg"><div class="exam-bar" style="width:21%;background:var(--text3)"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRESS TRACKER -->
+<section class="section" style="padding-top:0;">
+  <div class="section-eyebrow">Acompanhamento</div>
+  <h2>Meu progresso</h2>
+  <div class="progress-section">
+    <div style="display:flex;gap:2rem;margin-bottom:1.5rem;">
+      <div>
+        <div style="font-size:2rem;font-weight:800;color:var(--green)" id="done-count">0</div>
+        <div style="font-size:0.75rem;color:var(--text2)">semanas concluídas</div>
+      </div>
+      <div>
+        <div style="font-size:2rem;font-weight:800;color:var(--text2)" id="remain-count">30</div>
+        <div style="font-size:0.75rem;color:var(--text2)">restantes</div>
+      </div>
+      <div>
+        <div style="font-size:2rem;font-weight:800;color:var(--amber)" id="pct-count">0%</div>
+        <div style="font-size:0.75rem;color:var(--text2)">concluído</div>
+      </div>
+    </div>
+    <div class="progress-bar-bg" style="height:8px;margin-bottom:1.5rem;">
+      <div class="progress-fill" id="main-bar" style="width:0%;background:linear-gradient(90deg,var(--blue),var(--teal))"></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;" id="week-checks">
+    </div>
+  </div>
+</section>
+
+<!-- BLOCOS OVERVIEW -->
+<section class="section" style="padding-top:0;">
+  <div class="section-eyebrow">Estrutura</div>
+  <h2>11 blocos temáticos</h2>
+  <div class="blocks-grid">
+    <div class="block-card" onclick="scrollToBlock('semiologia')">
+      <div class="block-num" style="color:var(--teal)">Bloco 1 · Semanas 1–3</div>
+      <div class="block-title">Semiologia & Neuroanatomia</div>
+      <div class="block-weeks">15 sessões · base para toda a prova</div>
+      <div class="block-tags">
+        <span class="tag" style="background:rgba(46,196,166,0.15);color:var(--teal-l)">Exame Neurológico</span>
+        <span class="tag" style="background:rgba(46,196,166,0.15);color:var(--teal-l)">EEG Básico</span>
+        <span class="tag" style="background:rgba(46,196,166,0.15);color:var(--teal-l)">EMG</span>
+      </div>
+    </div>
+    <div class="block-card" onclick="scrollToBlock('avc')">
+      <div class="block-num" style="color:var(--green)">Bloco 2 · Semanas 4–7</div>
+      <div class="block-title">Doenças Cerebrovasculares</div>
+      <div class="block-weeks">20 sessões · 10 questões na prova</div>
+      <div class="block-tags">
+        <span class="tag" style="background:rgba(82,183,136,0.15);color:var(--green-l)">AVC Isquêmico</span>
+        <span class="tag" style="background:rgba(82,183,136,0.15);color:var(--green-l)">Trombólise</span>
+        <span class="tag" style="background:rgba(82,183,136,0.15);color:var(--green-l)">UTI Neuro</span>
+      </div>
+    </div>
+    <div class="block-card" onclick="scrollToBlock('epilepsia')">
+      <div class="block-num" style="color:var(--amber)">Bloco 3 · Semanas 8–11</div>
+      <div class="block-title">Epilepsia</div>
+      <div class="block-weeks">20 sessões · 9 questões na prova</div>
+      <div class="block-tags">
+        <span class="tag" style="background:rgba(232,168,69,0.15);color:var(--amber-l)">Classificação ILAE</span>
+        <span class="tag" style="background:rgba(232,168,69,0.15);color:var(--amber-l)">Status</span>
+        <span class="tag" style="background:rgba(232,168,69,0.15);color:var(--amber-l)">FAEs</span>
+      </div>
+    </div>
+    <div class="block-card" onclick="scrollToBlock('cefaleia')">
+      <div class="block-num" style="color:var(--coral)">Bloco 4 · Semanas 12–14</div>
+      <div class="block-title">Cefaleias</div>
+      <div class="block-weeks">15 sessões · 9 questões na prova</div>
+      <div class="block-tags">
+        <span class="tag" style="background:rgba(224,122,95,0.15);color:#F0A58A">Migrânea</span>
+        <span class="tag" style="background:rgba(224,122,95,0.15);color:#F0A58A">CGRP</span>
+        <span class="tag" style="background:rgba(224,122,95,0.15);color:#F0A58A">TAC</span>
+      </div>
+    </div>
+    <div class="block-card" onclick="scrollToBlock('neuroimuno')">
+      <div class="block-num" style="color:var(--blue)">Bloco 5 · Semanas 15–17</div>
+      <div class="block-title">Neuroimunologia</div>
+      <div class="block-weeks">15 sessões · 12 questões na prova</div>
+      <div class="block-tags">
+        <span class="tag" style="background:rgba(74,144,217,0.15);color:var(--blue-l)">EM McDonald 2024</span>
+        <span class="tag" style="background:rgba(74,144,217,0.15);color:var(--blue-l)">NMOSD</span>
+        <span class="tag" style="background:rgba(74,144,217,0.15);color:var(--blue-l)">MOGAD</span>
+      </div>
+    </div>
+    <div class="block-card" onclick="scrollToBlock('movimento')">
+      <div class="block-num" style="color:var(--teal)">Bloco 6 · Semanas 18–20</div>
+      <div class="block-title">Distúrbios do Movimento</div>
+      <div class="block-weeks">15 sessões · 10 questões na prova</div>
+      <div class="block-tags">
+        <span class="tag" style="background:rgba(46,196,166,0.15);color:var(--teal-l)">Parkinson</span>
+        <span class="tag" style="background:rgba(46,196,166,0.15);color:var(--teal-l)">Atípicos</span>
+        <span class="tag" style="background:rgba(46,196,166,0.15);color:var(--teal-l)">ELA</span>
+      </div>
+    </div>
+    <div class="block-card" onclick="scrollToBlock('cognitiva')">
+      <div class="block-num" style="color:#C084FC">Bloco 7 · Semanas 21–22</div>
+      <div class="block-title">Neurologia Cognitiva</div>
+      <div class="block-weeks">10 sessões · 9 questões na prova</div>
+      <div class="block-tags">
+        <span class="tag" style="background:rgba(192,132,252,0.15);color:#D8B4FE">Alzheimer</span>
+        <span class="tag" style="background:rgba(192,132,252,0.15);color:#D8B4FE">Antiamiloides</span>
+        <span class="tag" style="background:rgba(192,132,252,0.15);color:#D8B4FE">DLB / DFT</span>
+      </div>
+    </div>
+    <div class="block-card" onclick="scrollToBlock('neuromuscular')">
+      <div class="block-num" style="color:var(--purple)">Bloco 8 · Semanas 23–24</div>
+      <div class="block-title">Doenças Neuromusculares</div>
+      <div class="block-weeks">10 sessões · 14 questões na prova</div>
+      <div class="block-tags">
+        <span class="tag" style="background:rgba(139,111,212,0.15);color:var(--purple-l)">Neuropatias</span>
+        <span class="tag" style="background:rgba(139,111,212,0.15);color:var(--purple-l)">Miastenia</span>
+        <span class="tag" style="background:rgba(139,111,212,0.15);color:var(--purple-l)">Miopatias</span>
+      </div>
+    </div>
+    <div class="block-card" onclick="scrollToBlock('neuroinfec')">
+      <div class="block-num" style="color:var(--red)">Bloco 9 · Semanas 25–26</div>
+      <div class="block-title">Neuroinfecção</div>
+      <div class="block-weeks">10 sessões · 6 questões na prova</div>
+      <div class="block-tags">
+        <span class="tag" style="background:rgba(224,92,92,0.15);color:#F4A4A4">Meningites</span>
+        <span class="tag" style="background:rgba(224,92,92,0.15);color:#F4A4A4">Encefalites</span>
+        <span class="tag" style="background:rgba(224,92,92,0.15);color:#F4A4A4">Neurocisticercose</span>
+      </div>
+    </div>
+    <div class="block-card" onclick="scrollToBlock('sono')">
+      <div class="block-num" style="color:#38BDF8">Bloco 10 · Semanas 27–28</div>
+      <div class="block-title">Sono & Neuroftalmologia</div>
+      <div class="block-weeks">10 sessões · 15 questões na prova</div>
+      <div class="block-tags">
+        <span class="tag" style="background:rgba(56,189,248,0.15);color:#7DD3FC">Narcolepsia</span>
+        <span class="tag" style="background:rgba(56,189,248,0.15);color:#7DD3FC">RBD</span>
+        <span class="tag" style="background:rgba(56,189,248,0.15);color:#7DD3FC">NAION</span>
+      </div>
+    </div>
+    <div class="block-card" onclick="scrollToBlock('revisao')">
+      <div class="block-num" style="color:var(--text2)">Bloco 11 · Semanas 29–30</div>
+      <div class="block-title">Revisão Integrada & Simulado</div>
+      <div class="block-weeks">10 sessões · todas as áreas</div>
+      <div class="block-tags">
+        <span class="tag" style="background:rgba(138,149,168,0.15);color:var(--text2)">Simulado</span>
+        <span class="tag" style="background:rgba(138,149,168,0.15);color:var(--text2)">Casos Clínicos</span>
+        <span class="tag" style="background:rgba(138,149,168,0.15);color:var(--text2)">Lacunas</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WEEKLY PLAN -->
+<section class="section" style="padding-top:0;">
+  <div class="section-eyebrow">Plano Detalhado</div>
+  <h2>Semana a semana</h2>
+
+  <div class="week-filter">
+    <button class="filter-btn active" onclick="filterWeeks('all',this)">Todas as semanas</button>
+    <button class="filter-btn" onclick="filterWeeks('semiologia',this)">Semiologia</button>
+    <button class="filter-btn" onclick="filterWeeks('avc',this)">AVC</button>
+    <button class="filter-btn" onclick="filterWeeks('epilepsia',this)">Epilepsia</button>
+    <button class="filter-btn" onclick="filterWeeks('cefaleia',this)">Cefaleia</button>
+    <button class="filter-btn" onclick="filterWeeks('neuroimuno',this)">Neuroimuno</button>
+    <button class="filter-btn" onclick="filterWeeks('movimento',this)">Movimento</button>
+    <button class="filter-btn" onclick="filterWeeks('cognitiva',this)">Cognitiva</button>
+    <button class="filter-btn" onclick="filterWeeks('neuromuscular',this)">NM</button>
+    <button class="filter-btn" onclick="filterWeeks('neuroinfec',this)">Neuroinfecção</button>
+    <button class="filter-btn" onclick="filterWeeks('sono',this)">Sono/Oftalmo</button>
+    <button class="filter-btn" onclick="filterWeeks('revisao',this)">Revisão</button>
+  </div>
+
+  <div class="weeks-list" id="weeks-list"></div>
+</section>
+
+<!-- APPENDIX: AAN 2026 -->
+<section class="section" style="padding-top:0;">
+  <div class="section-eyebrow">Apêndice</div>
+  <h2>Aulas AAN 2026 prioritárias</h2>
+  <div class="append-grid">
+    <div class="append-card">
+      <div class="append-card-head" style="color:var(--blue)">Neuroimunologia & EM</div>
+      <div class="append-row"><span class="append-code">C88</span><span class="append-name">Revised McDonald Criteria 2024: Diagnosis and Misdiagnosis of MS</span><span class="append-week">Sem. 15–16</span></div>
+      <div class="append-row"><span class="append-code">C47</span><span class="append-name">Myelin Oligodendrocyte Glycoprotein Antibody Disorders (MOGAD)</span><span class="append-week">Sem. 17</span></div>
+      <div class="append-row"><span class="append-code">S6</span><span class="append-name">Autoimmune Neurology: NMOSD and MOGAD</span><span class="append-week">Sem. 15–17</span></div>
+      <div class="append-row"><span class="append-code">C17</span><span class="append-name">Progressive MS in Focus</span><span class="append-week">Sem. 16</span></div>
+      <div class="append-row"><span class="append-code">C2</span><span class="append-name">Autoimmune Neurology: Central Nervous System</span><span class="append-week">Sem. 17</span></div>
+    </div>
+    <div class="append-card">
+      <div class="append-card-head" style="color:var(--teal)">Movimento & MND</div>
+      <div class="append-row"><span class="append-code">C67</span><span class="append-name">Atypical Parkinsonism</span><span class="append-week">Sem. 18</span></div>
+      <div class="append-row"><span class="append-code">C4</span><span class="append-name">Lewy Body Dementia</span><span class="append-week">Sem. 21</span></div>
+      <div class="append-row"><span class="append-code">C75</span><span class="append-name">Motor Neuron Disease</span><span class="append-week">Sem. 20</span></div>
+      <div class="append-row"><span class="append-code">C30</span><span class="append-name">Surgical Interventions for Movement Disorders</span><span class="append-week">Sem. 18</span></div>
+      <div class="append-row"><span class="append-code">S11</span><span class="append-name">Movement Disorders: Technological Advances in Diagnostics</span><span class="append-week">Sem. 18–19</span></div>
+    </div>
+    <div class="append-card">
+      <div class="append-card-head" style="color:var(--green)">AVC & Neurointensivismo</div>
+      <div class="append-row"><span class="append-code">C6</span><span class="append-name">Essentials of Acute Treatment and Prevention of Ischemic Stroke</span><span class="append-week">Sem. 4</span></div>
+      <div class="append-row"><span class="append-code">S10</span><span class="append-name">Advances in Stroke Imaging and Biomarkers</span><span class="append-week">Sem. 5–6</span></div>
+      <div class="append-row"><span class="append-code">C153</span><span class="append-name">Brain Death</span><span class="append-week">Sem. 7</span></div>
+      <div class="append-row"><span class="append-code">C79</span><span class="append-name">Neurointensive Care: The Essentials</span><span class="append-week">Sem. 7</span></div>
+      <div class="append-row"><span class="append-code">S20</span><span class="append-name">Innovations in Cerebrovascular Therapy</span><span class="append-week">Sem. 6</span></div>
+    </div>
+    <div class="append-card">
+      <div class="append-card-head" style="color:var(--purple)">Neuromuscular & Cognitiva</div>
+      <div class="append-row"><span class="append-code">C69</span><span class="append-name">Essentials of Demyelinating Neuropathies</span><span class="append-week">Sem. 23</span></div>
+      <div class="append-row"><span class="append-code">C191</span><span class="append-name">MG: Myasthenia Gravis, Ocular, and MuSK</span><span class="append-week">Sem. 24</span></div>
+      <div class="append-row"><span class="append-code">C117</span><span class="append-name">Transforming Alzheimer's Care: Plasma Biomarkers & Anti-Amyloid</span><span class="append-week">Sem. 21</span></div>
+      <div class="append-row"><span class="append-code">C192</span><span class="append-name">Rapidly Progressive Dementia</span><span class="append-week">Sem. 22</span></div>
+      <div class="append-row"><span class="append-code">C65</span><span class="append-name">🇧🇷 Neurologia 2026: Tendências e Inovações (PT)</span><span class="append-week">Revisão</span></div>
+    </div>
+    <div class="append-card">
+      <div class="append-card-head" style="color:var(--amber)">Epilepsia & Sono</div>
+      <div class="append-row"><span class="append-code">C20</span><span class="append-name">Translating Evidence Into Care: Guidelines in Epilepsy</span><span class="append-week">Sem. 8</span></div>
+      <div class="append-row"><span class="append-code">C127</span><span class="append-name">Update in Acute Seizure Management and Status Epilepticus</span><span class="append-week">Sem. 9</span></div>
+      <div class="append-row"><span class="append-code">PL5</span><span class="append-name">Clinical Trials Plenary Session</span><span class="append-week">Sem. 11</span></div>
+      <div class="append-row"><span class="append-code">S3</span><span class="append-name">Research Advances in Sleep and Clinical Impact</span><span class="append-week">Sem. 27</span></div>
+      <div class="append-row"><span class="append-code">C16</span><span class="append-name">Parasomnias and Sleep-related Movement Disorders</span><span class="append-week">Sem. 27</span></div>
+    </div>
+    <div class="append-card">
+      <div class="append-card-head" style="color:var(--coral)">Cefaleia & Neuroinfecção</div>
+      <div class="append-row"><span class="append-code">C35</span><span class="append-name">Cluster Headache and Other Primary Headache Disorders</span><span class="append-week">Sem. 12–13</span></div>
+      <div class="append-row"><span class="append-code">C159</span><span class="append-name">Comprehensive Migraine Update</span><span class="append-week">Sem. 12</span></div>
+      <div class="append-row"><span class="append-code">C40</span><span class="append-name">Neurosarcoidosis: Phenotypes, Diagnosis & Management</span><span class="append-week">Sem. 26</span></div>
+      <div class="append-row"><span class="append-code">C60</span><span class="append-name">Diagnosed a Patient with a Neuroinfectious Disease: Now What?</span><span class="append-week">Sem. 25</span></div>
+      <div class="append-row"><span class="append-code">C109</span><span class="append-name">Basic Science: Neuroanatomy — All the Lesions</span><span class="append-week">Sem. 1</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Plano de Estudos · Neurologia · Residência UNIFESP · 30 semanas · 30 min/dia<br>
+  Fontes: Tratado ABN 3ª ed. 2025 · AAN Annual Meeting 2026 · Prova de Título de Neurologia 2025
+</footer>
+
+<script>
+const WEEKS_DATA = [
+  {id:'semiologia', num:1, color:'#2EC4A6', title:'Semiologia I — Exame Neurológico e Neuroanatomia', sub:'Base obrigatória. Síndromes topográficas, LCR, neuroimagem básica.',
+    sessions:[
+      {num:'S1', titulo:'Anatomia do SNC e correlações anatomoclínicas', abn:'Cap. 4', aan:'C109 – Neuroanatomy', prova:'Q2, Q7', notas:'Síndromes medulares, trato córtico-espinhal'},
+      {num:'S2', titulo:'Exame Neurológico — motor, sensorial, reflexos', abn:'Cap. 5', aan:'C73 – Neuro Exam', prova:'Q1, Q7', notas:'Protocolo HINTS (Q1): vestíbulo-ocular, nistagmo, skew'},
+      {num:'S3', titulo:'Síndromes medulares: centromedular, cordonal, Brown-Séquard', abn:'Cap. 11', aan:'C38 – Myelopathies', prova:'Q2, Q37', notas:'Q37: artéria de Adamkiewicz'},
+      {num:'S4', titulo:'Exame do LCR: interpretação e correlações', abn:'Cap. 6', aan:'C105 – LP Findings', prova:'Q25, Q51', notas:'Meningite bacteriana, neurossífilis'},
+      {num:'S5', titulo:'Neuroimagem: RM cerebral — padrões básicos', abn:'Cap. 10', aan:'C195 – Neuroimaging Brain', prova:'Q35, Q52', notas:'Q35: sinal olho de tigre (PKAN)'},
+    ]
+  },
+  {id:'semiologia', num:2, color:'#2EC4A6', title:'Semiologia II — Nervos Cranianos, Pupila, Motricidade Ocular', sub:'Neuroftalmologia básica: pupilas, III-IV-VI pares, nistagmo.',
+    sessions:[
+      {num:'S1', titulo:'Motricidade ocular: III, IV, VI nervos — paresias e oftalmoplegia', abn:'Cap. 17', aan:'C76 – Diplopia & Nystagmus', prova:'Q81, Q86', notas:'Q86: fácies patética = paralisia do IV par'},
+      {num:'S2', titulo:'Pupilas: reflexo fotomotor, pupila tônica, anisocoria', abn:'Cap. 16', aan:'C49 – Visual Loss & Optic Neuropathies', prova:'Q7, Q98', notas:'Q98: pupila tônica → gânglio ciliar'},
+      {num:'S3', titulo:'Nervos cranianos V, VII, IX, X — semiologia e topografia', abn:'Caps. 18-19', aan:'C171 – Trigeminal Neuralgia', prova:'Q39, Q79', notas:'Q39: neuralgia do glossofaríngeo'},
+      {num:'S4', titulo:'Transtornos do nível de consciência — coma, estado vegetativo', abn:'Cap. 22', aan:'C175 – Coma Recovery', prova:'Q58', notas:'Q58: apatia e córtex frontal/estriado'},
+      {num:'S5', titulo:'Funções cognitivas superiores: linguagem, memória, praxia', abn:'Cap. 23', aan:'N1 – Aphasia & Apraxia', prova:'Q22, Q55', notas:'Q55: sinal do aplauso = PSP/DFT'},
+    ]
+  },
+  {id:'semiologia', num:3, color:'#2EC4A6', title:'Semiologia III — Movimentos Anormais, Autônomo, EEG Básico', sub:'Asterixis, disautonomia e EEG antes de entrar nos blocos clínicos.',
+    sessions:[
+      {num:'S1', titulo:'Transtornos do movimento — semiologia: tremor, coreia, distonia, asterixis', abn:'Cap. 13', aan:'C45 – Unusual Movement Disorders', prova:'Q9, Q91', notas:'Q9: asterixis = lapso postural'},
+      {num:'S2', titulo:'Sistema Nervoso Autônomo: disautonomia e testes', abn:'Cap. 25', aan:'C138 – Autonomic Disorders', prova:'Q97', notas:'Q97: trigêmino → núcleo salivatório → esfenopalatino (SUNCT)'},
+      {num:'S3', titulo:'EEG: normalidade, variantes normais, armadilhas na leitura', abn:'Cap. 7', aan:'C92 – EEG Normal Variants', prova:'Q3, Q90', notas:'Q3: epilepsia auditiva (ADTLE); Q90: esgrimista = frontal'},
+      {num:'S4', titulo:'EMG: padrões básicos, desmielinização vs. axonal', abn:'Cap. 8', aan:'C26 – Skills: NCS', prova:'Q19, Q33', notas:'Q19: radial no sulco espiral; Q33: fibular vs L5'},
+      {num:'S5', titulo:'REVISÃO Bloco 1 — Questões da prova (semiologia)', abn:'—', aan:'—', prova:'Q1–Q9 revisados', notas:'Refaça as 9 questões de semiologia/anatomia'},
+    ]
+  },
+  {id:'avc', num:4, color:'#52B788', title:'AVC I — Fisiopatologia, Diagnóstico e Fase Aguda', sub:'Trombólise, trombectomia, escalas neurológicas, síndromes vasculares.',
+    sessions:[
+      {num:'S1', titulo:'Síndromes vasculares isquêmicas: territórios e correlações clínicas', abn:'Cap. 46', aan:'C6 – Essentials: Ischemic Stroke', prova:'Q11, Q70', notas:'Q11: AVC jovem + pulso assimétrico (dissecção)'},
+      {num:'S2', titulo:'Fase aguda do AVC: trombólise, trombectomia, protocolos', abn:'Cap. 51', aan:'C42 – Stroke Cases', prova:'Q23, Q66', notas:'Q66: janela terapêutica trombectomia'},
+      {num:'S3', titulo:'Escalas: NIHSS, mRS, TOAST — aplicação prática', abn:'Cap. 47', aan:'C64 – NeuroCritical Vascular', prova:'Q77, Q84', notas:'Q84: Classificação Heidelberg HI2'},
+      {num:'S4', titulo:'AVC em situações especiais: jovens, criptogênico', abn:'Caps. 48, 58', aan:'S25 – Emerging Stroke Therapies', prova:'Q38, Q48', notas:'Q38: AVC recorrente jovem → CADASIL?'},
+      {num:'S5', titulo:'Imaging do AVC: TC, RM DWI, FLAIR, penumbra', abn:'Cap. 10', aan:'S10 – Stroke Imaging & Biomarkers', prova:'Q11, Q23', notas:'Mismatch DWI/FLAIR, decisão endovascular'},
+    ]
+  },
+  {id:'avc', num:5, color:'#52B788', title:'AVC II — Prevenção Secundária e Antitrombóticos', sub:'DOACs, antiagregantes, mímicos do AVC e arterite de células gigantes.',
+    sessions:[
+      {num:'S1', titulo:'Prevenção secundária: anticoagulantes e antiagregantes', abn:'Caps. 52–54', aan:'C42 – Stroke Prevention Cases', prova:'Q48, Q76', notas:'DOACs, warfarina, FA e AVC'},
+      {num:'S2', titulo:'Mímicos do AVC: diagnóstico diferencial e funcionais', abn:'Cap. 165', aan:'C77 – Medical Misinformation', prova:'Q76', notas:'Q76: TNF, crise epiléptica pós-ictal como mimics'},
+      {num:'S3', titulo:'AVC hemorrágico: ICH, SAH, trombose venosa cerebral', abn:'Caps. 55, 57', aan:'C126 – Hemorrhagic Stroke', prova:'Q84', notas:'Classificação Heidelberg; espasmo pós-SAH'},
+      {num:'S4', titulo:'Vasculites do SNC: arterite de células gigantes', abn:'Cap. 49', aan:'C99 – Neuro-rheumatology', prova:'Q65, Q74', notas:'Q65: biópsia artéria temporal urgente'},
+      {num:'S5', titulo:'UTI neurológica vascular: manejo da PA, febre, glicemia', abn:'Caps. 50, 159', aan:'C79 – Neurointensive Essentials', prova:'Q23', notas:'Osmoterapia, nimodipina, monitorização'},
+    ]
+  },
+  {id:'avc', num:6, color:'#52B788', title:'AVC III — Síndromes Específicas e Biomarcadores 2026', sub:'Tronco cerebral, AVC lacunar, CADASIL, amilóide e inovações terapêuticas.',
+    sessions:[
+      {num:'S1', titulo:'Síndromes de tronco: Wallenberg, Weber, fossa posterior', abn:'Cap. 46', aan:'C64 – NeuroCritical Vascular', prova:'Q31', notas:'Q31: Wernicke — confusão+nistagmo+ataxia+oftalmoplegia'},
+      {num:'S2', titulo:'AVC lacunar: fisiopatologia, quadros clínicos', abn:'Cap. 46', aan:'S44 – Evidence-based Stroke', prova:'Q52', notas:'Leucoaraiose e disfunção executiva'},
+      {num:'S3', titulo:'Biomarcadores no AVC: GFAP, NF-L; ARIA hemorrágica', abn:'Cap. 165', aan:'S10 – Stroke Imaging & Biomarkers', prova:'Q36', notas:'Q36: APOE4 e risco de ARIA com antiamiloides'},
+      {num:'S4', titulo:'Reabilitação pós-AVC: neuroplasticidade, tecnologia', abn:'Cap. 195', aan:'S17 – Neuro-rehab', prova:'—', notas:'Espasticidade, AFO, terapia por espelho'},
+      {num:'S5', titulo:'REVISÃO AVC — Casos clínicos (10 questões)', abn:'—', aan:'—', prova:'Q11,Q23,Q38,Q48,Q66,Q70,Q76,Q77,Q84', notas:'Resolução comentada dos 10 itens de AVC'},
+    ]
+  },
+  {id:'avc', num:7, color:'#52B788', title:'Neurointensivismo e Emergências Neurológicas', sub:'TCE, HIC, morte encefálica, intoxicações — competências do neurohospitalista.',
+    sessions:[
+      {num:'S1', titulo:'TCE: classificação, protocolos, cirurgia', abn:'Cap. 162', aan:'C56 – Neurotrauma ICU', prova:'Q84', notas:'Lesão axonal difusa; monitorização PIC'},
+      {num:'S2', titulo:'Hipertensão intracraniana: manejo clínico e cirúrgico', abn:'Cap. 163', aan:'C79 – Neurointensive Essentials', prova:'Q23', notas:'Osmoterapia, hiperventilação, craniectomia'},
+      {num:'S3', titulo:'Monitorização multimodal em UTI Neurológica', abn:'Cap. 158', aan:'C34 – Critical Care EEG', prova:'Q44', notas:'EEG contínuo, PtiO2, microdiálise'},
+      {num:'S4', titulo:'Morte encefálica: critérios, diagnóstico, prognóstico', abn:'Cap. 22', aan:'C153 – Brain Death', prova:'—', notas:'Critérios brasileiros vs. internacionais'},
+      {num:'S5', titulo:'Emergências tóxico-metabólicas: serotonina, porfiria, Wernicke', abn:'Cap. 165', aan:'C141 – CNS Toxicities', prova:'Q20, Q42, Q102', notas:'Q20: síndrome serotoninérgica; Q42: porfiria'},
+    ]
+  },
+  {id:'epilepsia', num:8, color:'#E8A845', title:'Epilepsia I — Classificação, Semiologia e Diagnóstico', sub:'9 questões na prova. Classificação ILAE, semiologia ictal, diagnóstico diferencial.',
+    sessions:[
+      {num:'S1', titulo:'Definição e classificação das crises epilépticas (ILAE 2022)', abn:'Cap. 79', aan:'C20 – Guidelines in Epilepsy', prova:'Q78, Q90', notas:'Q78: JME (mioclonias matinais); Q90: esgrimista = frontal'},
+      {num:'S2', titulo:'Semiologia ictal: localização e lateralização', abn:'Cap. 80', aan:'C5 – Clinical Epilepsy', prova:'Q3, Q90', notas:'Q3: epilepsia auditiva = ADTLE (temporal lateral)'},
+      {num:'S3', titulo:'Diagnóstico diferencial: CNEP, síncope vs. epilepsia', abn:'Cap. 83', aan:'C54 – Functional Movement Disorders', prova:'Q92, Q44', notas:'Q92: cataplexia vs. CNEP; Q44: risco após 1ª crise'},
+      {num:'S4', titulo:'EEG focal, difuso, epileptiforme — padrões práticos', abn:'Cap. 7', aan:'C103 – EEG Abnormalities', prova:'Q3, Q78', notas:'JME: poliespigas; ADTLE: espiga temporal lateral'},
+      {num:'S5', titulo:'Epilepsias pediátricas: síndromes, Dravet, West', abn:'Cap. 173', aan:'C118 – EEG Neonatal Pediatric', prova:'Q80, Q101', notas:'Q101: GLUT1 → dieta cetogênica; Q80: tricotiodistrofia'},
+    ]
+  },
+  {id:'epilepsia', num:9, color:'#E8A845', title:'Epilepsia II — Tratamento e Status Epilepticus', sub:'FAEs de 1ª e 2ª linha, status epilepticus e situações especiais.',
+    sessions:[
+      {num:'S1', titulo:'Tratamento farmacológico: FAEs de 1ª e 2ª linha', abn:'Cap. 81', aan:'C193 – Epilepsy Therapy Update', prova:'Q78', notas:'VPA, LTG, LEV, LCM, perampanel'},
+      {num:'S2', titulo:'Status epilepticus: diagnóstico, protocolo em etapas', abn:'Cap. 84', aan:'C127 – Status Epilepticus', prova:'Q44', notas:'BZD → FAE → midazolam/propofol; EEG contínuo'},
+      {num:'S3', titulo:'Epilepsia e situações especiais: gestação, idosos', abn:'Cap. 82', aan:'C142 – Epilepsy Across Lifespan', prova:'Q44', notas:'Teratogenicidade, interações medicamentosas'},
+      {num:'S4', titulo:'Cirurgia de epilepsia: indicações, SEEG, VNS, DBS', abn:'Cap. 82', aan:'C27 – Skills: Neuromodulation', prova:'Q3', notas:'Displasia cortical focal como causa cirúrgica'},
+      {num:'S5', titulo:'Epilepsia genética: Dravet, GLUT1, SCN1A', abn:'Cap. 204', aan:'S29 – Epilepsy Basic Science', prova:'Q101', notas:'Q101: GLUT1 → cetogênica; SCN1A → evitar bloqueador Na'},
+    ]
+  },
+  {id:'epilepsia', num:10, color:'#E8A845', title:'Epilepsia III — Estrutural, Imune e Biomarcadores', sub:'Displasias corticais, esclerose mesial, encefalite límbica, epilepsia e tumores.',
+    sessions:[
+      {num:'S1', titulo:'Epilepsias focais estruturais: displasia, esclerose mesial', abn:'Cap. 80', aan:'C5 – Clinical Epilepsy', prova:'Q3', notas:'RM 3T como padrão; classificação ILAE displasias'},
+      {num:'S2', titulo:'Epilepsia e imunidade: encefalite límbica, NORSE', abn:'Cap. 90', aan:'C2 – Autoimmune CNS', prova:'Q27, Q62', notas:'Q27: encefalite viral → epilepsia aguda'},
+      {num:'S3', titulo:'Epilepsia e tumores: gliomas baixo grau', abn:'Cap. 155', aan:'C83 – Brain Tumors', prova:'Q44', notas:'Gliomas de baixo grau são altamente epileptogênicos'},
+      {num:'S4', titulo:'EEG neonatal/pediátrico: burst-suppression, hipsarritmia', abn:'Cap. 7', aan:'C118 – EEG Neonatal', prova:'Q80', notas:'Síndrome de West: hipsarritmia + espasmos + atraso'},
+      {num:'S5', titulo:'REVISÃO Epilepsia — Q3, Q27, Q44, Q78, Q90, Q92, Q101', abn:'—', aan:'—', prova:'7 questões revisadas', notas:'Resolução comentada das questões de epilepsia'},
+    ]
+  },
+  {id:'epilepsia', num:11, color:'#E8A845', title:'Epilepsia IV — Atualidades AAN 2026, ASOs, TNF', sub:'Clinical Trials Plenary, terapias gênicas, transtorno neurológico funcional.',
+    sessions:[
+      {num:'S1', titulo:'Clinical Trials Plenary AAN 2026: destaques em epilepsia', abn:'—', aan:'PL5 – Clinical Trials Plenary', prova:'Q101', notas:'Revisão dos principais ensaios clínicos apresentados'},
+      {num:'S2', titulo:'Novas terapias: ASOs, terapia gênica, CRISPR', abn:'Cap. 82', aan:'S29 – Epilepsy Basic Science', prova:'Q6 (ELA–tofersen)', notas:'Analogia com ASOs em ELA (tofersen SOD1)'},
+      {num:'S3', titulo:'Epilepsia refratária: DBS, VNS, RNS, SEEG', abn:'Cap. 82', aan:'C27 – Skills: Neuromodulation', prova:'Q44', notas:'DBS tálamo anterior; RNS como opção closed-loop'},
+      {num:'S4', titulo:'Transtorno Neurológico Funcional: semiologia e tratamento', abn:'Caps. 27, 83', aan:'C133 – Functional Neurological Disorders', prova:'Q92, Q76', notas:'Diagnóstico positivo do TNF; rule in, não rule out'},
+      {num:'S5', titulo:'Sono e epilepsia: parassonias NREM, RBD, crises noturnas', abn:'Caps. 74–75', aan:'C16 – Parasomnias', prova:'Q49, Q92', notas:'Q49: RBD em homem 61 anos → alfa-sinucleinopatia'},
+    ]
+  },
+  {id:'cefaleia', num:12, color:'#E07A5F', title:'Cefaleias I — Migrânea, CGRP e Tratamento Moderno', sub:'9 questões na prova. Fisiopatologia CGRP, anticorpos monoclonais, triptanos.',
+    sessions:[
+      {num:'S1', titulo:'Fisiopatologia da migrânea: CSD, CGRP, trigeminovascular', abn:'Cap. 29', aan:'S23 – Hot Topics in Headache', prova:'Q46', notas:'Q46: CGRP fisiopatologia → implicação terapêutica dos mAbs'},
+      {num:'S2', titulo:'Tratamento agudo: triptanos, gepants, ditans', abn:'Cap. 37', aan:'C55 – New Therapies for Migraine', prova:'Q46, Q94', notas:'Q94: migrânea em status → rimegepant, valproato IV'},
+      {num:'S3', titulo:'Profilaxia: beta-bloqueadores, topiramato, mAbs anti-CGRP', abn:'Caps. 36–37', aan:'C159 – Comprehensive Migraine Update', prova:'Q16', notas:'Fremanezumab, galcanezumab, eptinezumab'},
+      {num:'S4', titulo:'Cefaleia tipo tensão e abuso de medicamentos (MOH)', abn:'Caps. 38, 45', aan:'C44 – Challenging Headache Cases', prova:'—', notas:'Protocolo de retirada gradual no MOH'},
+      {num:'S5', titulo:'Cefaleias trigeminoautonômicas: cluster, HC, SUNCT, SUNA', abn:'Cap. 39', aan:'C35 – Cluster & Primary Headache', prova:'Q16, Q75, Q93, Q97', notas:'Q75: indometacina nas TACs; Q93: hemicrania paroxística'},
+    ]
+  },
+  {id:'cefaleia', num:13, color:'#E07A5F', title:'Cefaleias II — Secundárias e Situações Especiais', sub:'Hipertensão/hipotensão liquórica, arterite de células gigantes, gestação.',
+    sessions:[
+      {num:'S1', titulo:'Cefaleias secundárias: hipertensão e hipotensão liquórica', abn:'Cap. 42', aan:'C130 – Low and High Pressure Headache', prova:'Q60, Q87', notas:'Q60: hipotensão liquórica (melhora deitado); Q87: sinusite'},
+      {num:'S2', titulo:'Arterite de células gigantes: diagnóstico e urgência', abn:'Cap. 49', aan:'C99 – Neuro-rheumatology', prova:'Q65, Q74', notas:'Q65: biópsia artéria temporal; Q74: polimialgia reumática'},
+      {num:'S3', titulo:'Cefaleia no PS: bandeiras vermelhas, SAH', abn:'Cap. 32', aan:'C68 – Headache in ED', prova:'Q87, Q94', notas:'Trovão, meningismo, fundo de olho, hemorragia'},
+      {num:'S4', titulo:'Cefaleia em situações especiais: gestação, criança, idoso', abn:'Cap. 44', aan:'C44 – Challenging Headache Cases', prova:'Q16', notas:'Opções seguras na gestação: metoclopramida, dipirona IV'},
+      {num:'S5', titulo:'Neuropatias cranianas dolorosas: neuralgia trigeminal, occipital', abn:'Cap. 43', aan:'C171 – Trigeminal Neuralgia', prova:'Q39, Q79', notas:'Q39: glossofaríngeo; Q79: bloqueio occipital'},
+    ]
+  },
+  {id:'cefaleia', num:14, color:'#E07A5F', title:'Cefaleias III — Revisão, Neuromodulação e Updates 2026', sub:'Revisão integrada, neuromodulação não invasiva, hipertensão intracraniana idiopática.',
+    sessions:[
+      {num:'S1', titulo:'REVISÃO — Cefaleias: todas as questões da prova', abn:'—', aan:'—', prova:'12 questões de cefaleia', notas:'Resolução comentada de todos os 12 itens'},
+      {num:'S2', titulo:'Updates migrânea: gepants orais, ditans — mecanismo', abn:'Cap. 36', aan:'S37 – Headache Clinical Trials', prova:'Q46', notas:'Rimegepant, ubrogepant, atogepant, lasmiditan'},
+      {num:'S3', titulo:'Neuromodulação não invasiva: TENS, TMS, eCOT-NS', abn:'Caps. 35, 191', aan:'C35 – Cluster & Primary Headache', prova:'—', notas:'Dispositivos: eTNS, GammaCore'},
+      {num:'S4', titulo:'Cefaleia pós-COVID e pós-vacinal', abn:'Cap. 149', aan:'C177 – AEFIs Neurological', prova:'Q41', notas:'Neuropatia de fibras finas, névoa cognitiva'},
+      {num:'S5', titulo:'Hipertensão intracraniana idiopática: critérios, tratamento', abn:'Cap. 171', aan:'C130 – Low & High Pressure', prova:'Q60', notas:'Acetazolamida; punção terapêutica; shunt VP'},
+    ]
+  },
+  {id:'neuroimuno', num:15, color:'#4A90D9', title:'Neuroimunologia I — EM: Diagnóstico e Critérios McDonald 2024', sub:'12 questões na prova. Critérios revisados, fenótipos, imagem e diagnóstico diferencial.',
+    sessions:[
+      {num:'S1', titulo:'Epidemiologia, fisiopatologia e fatores de risco da EM', abn:'Cap. 85', aan:'C88 – Revised McDonald Criteria', prova:'Q10, Q13', notas:'Q10: EBV como fator de risco; Q13: drogas com risco de rebote'},
+      {num:'S2', titulo:'Critérios de McDonald 2024: DIS e DIT', abn:'Cap. 86', aan:'C88 – Revised McDonald Criteria', prova:'Q10, Q95', notas:'Bandas oligoclonais, lesões corticais, kappa'},
+      {num:'S3', titulo:'Fenótipos clínicos: RRMS, PPMS, SPMS, CIS, RIS', abn:'Cap. 86', aan:'C17 – Progressive MS in Focus', prova:'Q13, Q95', notas:'Diferença entre formas progressivas primárias e secundárias'},
+      {num:'S4', titulo:'Imagem na EM: lesões em RM, realce Gd, lesões medulares', abn:'Caps. 10, 86', aan:'S8 – MS: Imaging & Biomarkers', prova:'Q10', notas:'Periventriculares, justacorticais, infratentoriais'},
+      {num:'S5', titulo:'Diagnóstico diferencial da EM: NMOSD, MOGAD', abn:'Caps. 86–88', aan:'C47 – MOGAD', prova:'Q43, Q95', notas:'Q43: síndrome da área postrema → NMOSD'},
+    ]
+  },
+  {id:'neuroimuno', num:16, color:'#4A90D9', title:'Neuroimunologia II — Tratamento da EM e Casos Especiais', sub:'DMTs de alta eficácia, rebote, alemtuzumabe, BTK, EM na gestação.',
+    sessions:[
+      {num:'S1', titulo:'Tratamento da EM: DMTs de baixa e alta eficácia', abn:'Cap. 87', aan:'S40 – MS Clinical Trials', prova:'Q13, Q69', notas:'Q13: rebote com natalizumabe/fingolimode; Q69: alemtuzumabe → PTI'},
+      {num:'S2', titulo:'EM progressiva: ocrelizumabe, BTK, imunoablação', abn:'Cap. 87', aan:'C17 – Progressive MS', prova:'Q13', notas:'Fenebrutinib, tolebrutinib — BTK inhibitors em PPMS/SPMS'},
+      {num:'S3', titulo:'Complicações do tratamento: LMP, infecções, ARIA', abn:'Cap. 87', aan:'C94 – Neurological Complications Cancer', prova:'Q69', notas:'Q69: PTI por alemtuzumabe — efeito adverso autoimune clássico'},
+      {num:'S4', titulo:'EM na gestação, lactação e infância', abn:'Cap. 87', aan:'C32 – Pediatric MS', prova:'Q10', notas:'Gravidez não piora EM; período pós-parto é de risco'},
+      {num:'S5', titulo:'NMOSD: critérios IPND, aquaporina-4 vs. MOG', abn:'Cap. 88', aan:'S6 – NMOSD and MOGAD', prova:'Q43, Q95', notas:'Q95: ataque grave → plasmaférese; Q43: área postrema'},
+    ]
+  },
+  {id:'neuroimuno', num:17, color:'#4A90D9', title:'Neuroimunologia III — MOGAD, Encefalites e Paraneoplásicas', sub:'Anti-NMDA, LGI1, GFAP, MOGAD e síndromes paraneoplásicas com anticorpos.',
+    sessions:[
+      {num:'S1', titulo:'MOGAD: espectro, diagnóstico, diferenças de NMOSD', abn:'Cap. 91', aan:'C47 – MOGAD', prova:'Q64', notas:'Cortical FLAIR, ON bilateral, ADEM-like; não usa rituximabe 1ª linha'},
+      {num:'S2', titulo:'Encefalites autoimunes: anti-NMDAR, LGI1, CASPR2, GFAP', abn:'Cap. 90', aan:'C2 – Autoimmune CNS', prova:'Q62', notas:'Q62: distinção anticorpo de superfície × paraneoplásico clássico'},
+      {num:'S3', titulo:'Síndromes paraneoplásicas: Hu, Yo, Ri, tumores associados', abn:'Cap. 90', aan:'C114 – Autoimmune: Paraneoplastic', prova:'Q41, Q62', notas:'Q41: PCCD paraneoplásica (cerebelar) × Susac'},
+      {num:'S4', titulo:'ADEM e variantes: diagnóstico e tratamento', abn:'Cap. 89', aan:'C2 – Autoimmune CNS', prova:'Q27', notas:'Q27: ADEM pós-infecção em adolescente → soroconversão MOG'},
+      {num:'S5', titulo:'REVISÃO Neuroimunologia — Q10, Q13, Q43, Q62, Q69, Q95', abn:'—', aan:'—', prova:'6 questões revisadas', notas:'Resolução comentada das questões de neuroimunologia'},
+    ]
+  },
+  {id:'movimento', num:18, color:'#2EC4A6', title:'Distúrbios do Movimento I — Parkinson: Diagnóstico e Tratamento', sub:'10 questões de movimento. Critérios MDS, levodopa, sintomas não-motores, DBS.',
+    sessions:[
+      {num:'S1', titulo:'Doença de Parkinson: critérios MDS, red flags', abn:'Cap. 59', aan:'C7 – Parkinson Assessment', prova:'Q34, Q96', notas:'Q96: bradicinesia = essencial; Q57: sinal cauda andorinha (MSA)'},
+      {num:'S2', titulo:'Tratamento farmacológico: levodopa, agonistas, IMAO-B', abn:'Cap. 59', aan:'S11 – Movement Disorders', prova:'Q34', notas:'Q34: alucinação em Parkinson → reduzir sertralina; pimavaserina'},
+      {num:'S3', titulo:'Sintomas não-motores: cognição, sono, autonomia, dor', abn:'Cap. 158', aan:'C158 – Non-motor Parkinson', prova:'Q34, Q49, Q57', notas:'Q49: RBD → alfa-sinucleinopatia; Q57: cauda andorinha = MSA'},
+      {num:'S4', titulo:'Parkinsonismos atípicos: MSA, PSP, DCB, DLB', abn:'Cap. 68', aan:'C67 – Atypical Parkinsonism', prova:'Q24, Q40, Q55, Q57', notas:'Q24: DLB (alucinações, flutuação, RBD); Q55: aplauso = PSP/DFT'},
+      {num:'S5', titulo:'DBS no Parkinson: indicações, núcleos-alvo, programação', abn:'Caps. 70, 187', aan:'C30 – Surgical Interventions', prova:'—', notas:'STN, GPi, VM tálamo — indicações e contraindicações'},
+    ]
+  },
+  {id:'movimento', num:19, color:'#2EC4A6', title:'Distúrbios do Movimento II — Tremor, Distonia, Coreia, Wilson', sub:'Tremor essencial, distonias, Huntington, Wilson, PKAN e movimentos induzidos por drogas.',
+    sessions:[
+      {num:'S1', titulo:'Tremor essencial e outros tremores: diagnóstico diferencial', abn:'Cap. 60', aan:'S11 – Movement Disorders', prova:'Q91', notas:'Propranolol × primidona; classificação MDS do tremor'},
+      {num:'S2', titulo:'Distonias focais e generalizadas: toxina botulínica', abn:'Cap. 61', aan:'C120 – Dystonias', prova:'—', notas:'C72 (skills): botox como padrão-ouro em distonia focal'},
+      {num:'S3', titulo:'Huntington e síndromes huntington-like; coreia de Sydenham', abn:'Cap. 62', aan:'C128 – Huntington & Choreas', prova:'Q91', notas:'Q91: coreia por hipertireoidismo (coreia de Graves)'},
+      {num:'S4', titulo:'Wilson, PKAN, acúmulo de ferro/cobre — neurodegeneração', abn:'Caps. 66–67', aan:'C45 – Unusual Movement Disorders', prova:'Q35, Q54', notas:'Q35: olho de tigre = PKAN; Q54: ceruloplasmina baixa = Wilson'},
+      {num:'S5', titulo:'Movimento por drogas: acatisia, discinesia tardia, SNA maligna', abn:'Cap. 64', aan:'C45 – Unusual Movement Disorders', prova:'Q20', notas:'Q20: síndrome serotoninérgica vs. neuroléptica maligna'},
+    ]
+  },
+  {id:'movimento', num:20, color:'#2EC4A6', title:'Esclerose Lateral Amiotrófica e Doenças do Neurônio Motor', sub:'4 questões de ELA na prova. Tofersen SOD1, diagnóstico El Escorial, cuidados paliativos.',
+    sessions:[
+      {num:'S1', titulo:'ELA: critérios diagnósticos, fenótipos, investigação', abn:'Cap. 108', aan:'C75 – Motor Neuron Disease', prova:'Q6, Q8, Q100', notas:'Q6: tofersen (SOD1); Q100: ELA bulbar + piramidal'},
+      {num:'S2', titulo:'ELA: dor, sintomas não-motores, manejo multidisciplinar', abn:'Cap. 108', aan:'C75 – Motor Neuron Disease', prova:'Q8', notas:'Q8: dor subestimada; câimbras, espasticidade, disfagia'},
+      {num:'S3', titulo:'AME: tipos, nusinersen, risdiplam, zolgensma', abn:'Cap. 109', aan:'S2 – Motor Neuron & Peripheral Nerve', prova:'Q30', notas:'Q30: Emery-Dreifuss (bloqueio AV + contratura de cotovelo)'},
+      {num:'S4', titulo:'REVISÃO Movimento — 10 questões', abn:'—', aan:'—', prova:'Q8,Q9,Q24,Q35,Q40,Q54,Q55,Q91,Q96,Q100', notas:'Resolução comentada dos 10 itens de movimento'},
+      {num:'S5', titulo:'Cuidados paliativos em neurologia: ELA, DP avançado', abn:'Caps. 207–210', aan:'C31 – Neuro-palliative Care', prova:'—', notas:'Diretivas antecipadas, ventilação na ELA, via oral comprometida'},
+    ]
+  },
+  {id:'cognitiva', num:21, color:'#C084FC', title:'Neurologia Cognitiva I — Alzheimer, MCI e Demências Degenerativas', sub:'9 questões. Alzheimer com biomarcadores plasmáticos e drogas antiamiloides.',
+    sessions:[
+      {num:'S1', titulo:'Alzheimer: fisiopatologia, biomarcadores, estágios', abn:'Cap. 98', aan:'C50 – Alzheimer\'s Disease', prova:'Q22, Q26, Q36', notas:'Q26: memantina × rivastigmina; Q36: APOE4 e ARIA'},
+      {num:'S2', titulo:'Antiamiloides (lecanemab, donanemab): indicações e ARIA', abn:'Cap. 98', aan:'C117 – Anti-Amyloid Therapies', prova:'Q36', notas:'Q36: ARIA hemorrágica — APOE4 aumenta risco; RM a cada ciclo'},
+      {num:'S3', titulo:'MCI: diagnóstico e progressão', abn:'Cap. 95', aan:'C62 – MCI/SCI', prova:'Q22', notas:'Q22: atrofia cortical posterior — variante visual da DA'},
+      {num:'S4', titulo:'DLB e demência de Parkinson: flutuações, alucinações', abn:'Cap. 97', aan:'C4 – Lewy Body Dementia', prova:'Q24, Q40', notas:'Q24: DLB (critérios McKeith); Q40: PET-FDG → hipometabolismo occipital'},
+      {num:'S5', titulo:'DFT e variantes: comportamental, semântica, não-fluente', abn:'Cap. 99', aan:'C18 – Frontotemporal Dementia', prova:'Q55, Q71', notas:'Q55: sinal aplauso = PSP/DFT; Q71: DFT comportamental em advogado'},
+    ]
+  },
+  {id:'cognitiva', num:22, color:'#C084FC', title:'Neurologia Cognitiva II — Vascular, Prions, Metabolismo', sub:'DCV, DRP, CJD, hidrocefalia de pressão normal, causas tratáveis de demência.',
+    sessions:[
+      {num:'S1', titulo:'Comprometimento cognitivo vascular: diagnóstico e risco', abn:'Cap. 101', aan:'C62 – MCI/SCI', prova:'Q52', notas:'Q52: leucoaraiose → disfunção frontal/velocidade processamento'},
+      {num:'S2', titulo:'Demência rapidamente progressiva: CJD, autoimune, prion', abn:'Caps. 100, 192', aan:'C192 – Rapidly Progressive Dementia', prova:'Q41', notas:'DJC: EEG complexos periódicos, RM DWI fita de cortiços'},
+      {num:'S3', titulo:'Hidrocefalia de pressão normal: tríade, diagnóstico, shunt', abn:'Cap. 102', aan:'C173 – Normal Pressure Hydrocephalus', prova:'—', notas:'Hakim-Adams: marcha magnética, incontinência, demência'},
+      {num:'S4', titulo:'Avaliação cognitiva breve: MOCA, MMSE, ADAS-Cog', abn:'Cap. 92', aan:'C139 – Cognitive Therapeutics', prova:'Q22, Q24', notas:'MOCA 30/30 em Q49 (RBD sem demência ainda)'},
+      {num:'S5', titulo:'REVISÃO Cognitiva — Q22, Q24, Q26, Q36, Q40, Q52, Q55, Q58, Q71', abn:'—', aan:'—', prova:'9 questões revisadas', notas:'Resolução comentada das questões de demência'},
+    ]
+  },
+  {id:'neuromuscular', num:23, color:'#8B6FD4', title:'Doenças Neuromusculares I — Neuropatias Periféricas', sub:'14 questões — área de maior peso na prova 2025. EMG, padrões, mononeuropatias.',
+    sessions:[
+      {num:'S1', titulo:'Abordagem clínica das neuropatias: padrões e diagnóstico', abn:'Cap. 112', aan:'C69 – Demyelinating Neuropathies', prova:'Q4, Q18, Q21', notas:'Q4: vitamina E → ataxia sensitiva; Q21: neuropatia sensitiva + Romberg'},
+      {num:'S2', titulo:'Neuropatias de fibras finas: diagnóstico, biópsia', abn:'Cap. 118', aan:'C36 – Small Fiber Neuropathy', prova:'Q72', notas:'Q72: fibras finas — EMG normal; diagnóstico: biópsia cutânea'},
+      {num:'S3', titulo:'Mononeuropatias de membros: mediano, ulnar, radial, fibular', abn:'Cap. 114', aan:'C26 – Skills: NCS', prova:'Q19, Q33', notas:'Q19: radial no sulco espiral; Q33: fibular vs L5 (inversão)'},
+      {num:'S4', titulo:'Neuropatias metabólicas e tóxicas: DM, uremia, drogas', abn:'Cap. 122', aan:'C36 – Small Fiber Neuropathy', prova:'Q4, Q18, Q56', notas:'Q56: AR + neuropatia sensitivo-motora; Q18: quimio-induzida'},
+      {num:'S5', titulo:'SGB e variantes: Fisher, AMAN, diagnóstico e tratamento', abn:'Cap. 119', aan:'C15 – Neuromuscular Emergencies', prova:'Q5', notas:'IVIG × plasmaférese; monitorização CVF'},
+    ]
+  },
+  {id:'neuromuscular', num:24, color:'#8B6FD4', title:'Doenças Neuromusculares II — CIDP, MG, Miopatias', sub:'CIDP com anticorpos, miastenia grave e novos biológicos (efgartigimod, ravulizumabe).',
+    sessions:[
+      {num:'S1', titulo:'CIDP e variantes: critérios EFNS, tratamento', abn:'Cap. 120', aan:'C137 – Autoimmune: Peripheral NS', prova:'Q67', notas:'Q67: anti-MAG → neuropatia desmielinizante + tremor postural'},
+      {num:'S2', titulo:'Miastenia Grave: epidemiologia, diagnóstico, MGFA', abn:'Cap. 110', aan:'C191 – MG: Ocular and MuSK', prova:'Q88', notas:'Q88: checkpoint → miopatia imunomediada/miastenia'},
+      {num:'S3', titulo:'Miastenia: colinesterase, IS, biológicos (eculizumabe, efgartigimod)', abn:'Cap. 110', aan:'C179 – MG Immunotherapy Update', prova:'—', notas:'FcRn blocker, complement; rituximabe anti-MuSK'},
+      {num:'S4', titulo:'Miopatias inflamatórias: DM, PM, IBM, IMNM', abn:'Cap. 133', aan:'S7 – Updates on Muscle Disorders', prova:'Q88', notas:'Q88: checkpoint (PD-1/CTLA-4) → IMNM ou MCI'},
+      {num:'S5', titulo:'REVISÃO NM — 14 questões (Q4,Q5,Q6,Q8,Q18,Q19,Q21,Q30,Q33,Q56,Q63,Q67,Q72,Q88,Q100)', abn:'—', aan:'—', prova:'14 questões revisadas', notas:'Área de maior peso na prova — revisão minuciosa'},
+    ]
+  },
+  {id:'neuroinfec', num:25, color:'#E05C5C', title:'Neuroinfecção I — Meningites, Encefalites e Imunossuprimidos', sub:'6 questões na prova. Meningite bacteriana, herpes, neurocisticercose, CMV, HTLV.',
+    sessions:[
+      {num:'S1', titulo:'Meningite bacteriana: diagnóstico, LCR, antibióticos empíricos', abn:'Cap. 140', aan:'C48 – Neurologic Infections', prova:'Q51, Q99', notas:'Q51: febre + sonolência → encefalite herpética → aciclovir imediato'},
+      {num:'S2', titulo:'Encefalites virais: herpes, arboviroses, diagnóstico molecular', abn:'Caps. 143–144', aan:'C60 – Neuroinfectious Disease', prova:'Q27, Q51, Q99', notas:'Q99: aciclovir antes do PCR — risco fatal sem tratamento'},
+      {num:'S3', titulo:'Neurocisticercose: estadiamento, tratamento anti-helmíntico', abn:'Cap. 145', aan:'C115 – Parasites, Fungi & Amoeba', prova:'—', notas:'Vesicular: albendazol + corticoide; calcificado: AEDs'},
+      {num:'S4', titulo:'SNC em imunossuprimido: PML, toxoplasmose, criptococose, CMV', abn:'Caps. 142, 152', aan:'C164 – Complications Immunosuppressed', prova:'Q5', notas:'Q5: mielopatia + linfopenia + LCR → HTLV → ganciclovir = CMV mielite'},
+      {num:'S5', titulo:'Hanseníase e SNC: neuropatia e diagnóstico diferencial', abn:'Cap. 148', aan:'C63 – Leprosy/NM Cases', prova:'Q63', notas:'Q63: hanseníase → fibras amielínicas (dor/temperatura)'},
+    ]
+  },
+  {id:'neuroinfec', num:26, color:'#E05C5C', title:'Neuroinfecção II — Inflamatórias Específicas e Updates 2026', sub:'Neurossarcoidose, COVID neurológico, neurossífilis, métodos moleculares.',
+    sessions:[
+      {num:'S1', titulo:'Neurossarcoidose: fenótipos, nervus intermedius, tratamento', abn:'Cap. 165', aan:'C40 – Neurosarcoidosis', prova:'—', notas:'Relevante para a prática clínica: nervus intermedius (case report)'},
+      {num:'S2', titulo:'Complicações neurológicas do SARS-CoV-2: mielite, NFF', abn:'Cap. 149', aan:'C124 – Emerging Neuroinfectious Disease', prova:'Q41', notas:'Neuropatia de fibras finas pós-COVID; névoa cognitiva'},
+      {num:'S3', titulo:'Neurossífilis, neurotuberculose, meningites crônicas', abn:'Caps. 150–151', aan:'C141 – Chronic Meningitis', prova:'Q25', notas:'Q25: VDRL negativo no LCR → FTA-ABS para confirmação'},
+      {num:'S4', titulo:'Novos métodos diagnósticos: NGS metagenômico, PCR multiplex', abn:'Cap. 154', aan:'C154 – New Methods Neuroinfectious', prova:'Q99', notas:'Metagenomic NGS no LCR — indicações e interpretação'},
+      {num:'S5', titulo:'REVISÃO Neuroinfecção — Q5, Q25, Q27, Q51, Q63, Q99', abn:'—', aan:'—', prova:'6 questões revisadas', notas:'Resolução comentada das questões de neuroinfecção'},
+    ]
+  },
+  {id:'sono', num:27, color:'#38BDF8', title:'Transtornos do Sono — Narcolepsia, Insônia, RBD e SPI', sub:'7 questões na prova. Narcolepsia tipo 1 (hipocretina), RBD como marcador de alfa-sinucleinopatia.',
+    sessions:[
+      {num:'S1', titulo:'Narcolepsia: tipos, critérios PSG/MSLT, cataplexia, hipocretina', abn:'Cap. 76', aan:'C16 – Parasomnias', prova:'Q12, Q92', notas:'Q12: narcolepsia tipo 1 → hipocretina baixa no LCR'},
+      {num:'S2', titulo:'Insônia: tipos, farmacologia (doxepina, z-drugs, daridorexant)', abn:'Cap. 73', aan:'C150 – Sleep Disorders', prova:'Q14, Q17', notas:'Q14: doxepina → antihistaminérgico (H1); Q17: fase atrasada'},
+      {num:'S3', titulo:'RBD e parassonias NREM: alfa-sinucleinopatia prodrômica', abn:'Caps. 74–75', aan:'S3 – Sleep & Clinical Impact', prova:'Q49', notas:'Q49: RBD em homem 61 anos → Parkinson/DLB'},
+      {num:'S4', titulo:'SPI: diagnóstico e tratamento dopaminérgico', abn:'Cap. 73', aan:'C150 – Sleep Disorders', prova:'Q50', notas:'Q50: SPI familiar → pramipexol de baixa dose'},
+      {num:'S5', titulo:'Hipersonias: Kleine-Levin, hipersonia idiopática', abn:'Cap. 76', aan:'S3 – Sleep & Clinical Impact', prova:'Q12', notas:'Kleine-Levin: sono periódico + megafagia + desinibição'},
+    ]
+  },
+  {id:'sono', num:28, color:'#38BDF8', title:'Neuroftalmologia & Neuro-otologia — NAION, VPPB, Diplopia', sub:'8 questões nesta área. HINTS, VPPB, NAION, migrânea vestibular.',
+    sessions:[
+      {num:'S1', titulo:'NAION: diagnóstico, fisiopatologia, papila em risco', abn:'Cap. 16', aan:'C49 – Visual Loss, Optic Neuropathies', prova:'Q64, Q81', notas:'Q64: NAION — disco drusas, sem tratamento eficaz'},
+      {num:'S2', titulo:'VPPB: patofisiologia, manobra de Epley e Semont', abn:'Cap. 137', aan:'C125 – Neuro-otology', prova:'Q59', notas:'Q59: VPPB canal posterior → Dix-Hallpike + Epley'},
+      {num:'S3', titulo:'Síndrome vestibular aguda: labirintite, neurite, AVC', abn:'Cap. 135', aan:'C1 – HINTS Protocol', prova:'Q1, Q47', notas:'Q47: episódios recorrentes → migrânea vestibular'},
+      {num:'S4', titulo:'Diplopia: abordagem — III, IV, VI nervos cranianos', abn:'Cap. 17', aan:'C76 – Diplopia & Nystagmus', prova:'Q81, Q86', notas:'Q81: III + DM → isquemia vs. aneurisma (dor intensa = aneurisma)'},
+      {num:'S5', titulo:'REVISÃO Sono + Neuroftalmologia — 12 questões', abn:'—', aan:'—', prova:'Q1,Q12,Q14,Q17,Q47,Q49,Q50,Q59,Q64,Q81,Q86,Q98', notas:'Resolução comentada das 12 questões desta área'},
+    ]
+  },
+  {id:'revisao', num:29, color:'#888780', title:'Revisão Integrada I — Temas Transversais e Alta Frequência', sub:'Dor neuropática, encefalopatia metabólica, mielopatias tóxicas, oncologia.',
+    sessions:[
+      {num:'S1', titulo:'Dor neuropática: fisiopatologia, allodinia, tratamento', abn:'Cap. 182', aan:'C113 – Pain Treatment', prova:'Q53', notas:'Q53: allodinia mecânica → sensibilização periférica'},
+      {num:'S2', titulo:'Distúrbios vestibulares: revisão e migrânea vestibular', abn:'Caps. 135–138', aan:'C125 – Neuro-otology', prova:'Q1, Q47, Q59', notas:'Algoritmo HINTS — central vs periférico'},
+      {num:'S3', titulo:'Encefalopatia metabólica: hepática, renal, carencial', abn:'Cap. 165', aan:'C169 – Fatigue Across Neurology', prova:'Q31, Q89, Q102', notas:'Q31: Wernicke; Q89: pós-bariátrica; Q102: porfiria'},
+      {num:'S4', titulo:'Mielopatias metabólicas: B12, cobre, pós-bariátrica', abn:'Cap. 169', aan:'C38 – Myelopathies', prova:'Q89', notas:'Q89: perda visual + ataxia pós-bariátrica → deficiência B12+Cu'},
+      {num:'S5', titulo:'Complicações neurológicas do tratamento oncológico', abn:'Cap. 157', aan:'C94 – Neuro Complications Cancer', prova:'Q88', notas:'Q88: checkpoint (PD-1/CTLA-4) → miosite, MG, PNP'},
+    ]
+  },
+  {id:'revisao', num:30, color:'#888780', title:'Revisão Integrada II — Simulado Final e Lacunas', sub:'Simulado com 40 questões da prova de título + análise de erros e revisão final.',
+    sessions:[
+      {num:'S1', titulo:'SIMULADO Parte 1 — 20 questões (Q1–Q51 selecionadas)', abn:'—', aan:'—', prova:'20 questões cronometradas', notas:'Resolva sem consulta. 30 minutos. Anote erros.'},
+      {num:'S2', titulo:'CORREÇÃO Simulado Parte 1 — análise de erros', abn:'—', aan:'—', prova:'—', notas:'Para cada erro: leia o capítulo do ABN. Flashcard do conceito.'},
+      {num:'S3', titulo:'SIMULADO Parte 2 — 20 questões (Q52–Q102 selecionadas)', abn:'—', aan:'—', prova:'20 questões cronometradas', notas:'Segunda rodada com maior dificuldade (neuromuscular, raro)'},
+      {num:'S4', titulo:'CORREÇÃO Simulado Parte 2 — consolidação final', abn:'—', aan:'—', prova:'—', notas:'Tema mais errado = prioridade antes da prova de título'},
+      {num:'S5', titulo:'REVISÃO FINAL — McDonald 2024, NMOSD, guidelines AAN 2026', abn:'Caps. 86–88', aan:'PL3 – Presidential Plenary', prova:'Todos os temas', notas:'Resumo das principais mudanças de 2024–2026 que caem em provas'},
+    ]
+  },
+];
+
+function renderWeeks() {
+  const container = document.getElementById('weeks-list');
+  container.innerHTML = '';
+
+  WEEKS_DATA.forEach(week => {
+    const div = document.createElement('div');
+    div.className = 'week-item';
+    div.dataset.block = week.id;
+    div.id = `week-${week.num}`;
+
+    const prova_qs = week.sessions.filter(s => s.prova && s.prova !== '—').length;
+
+    div.innerHTML = `
+      <div class="week-header" onclick="toggleWeek(${week.num})">
+        <div class="week-num-badge" style="background:${week.color}22;color:${week.color};border:1px solid ${week.color}44">
+          ${week.num}
+        </div>
+        <div class="week-info">
+          <div class="week-title">${week.title}</div>
+          <div class="week-sub">${week.sub}</div>
+        </div>
+        <div class="week-meta">
+          ${prova_qs > 0 ? `<span class="badge" style="background:rgba(139,111,212,0.15);color:#B8A4E8;border:1px solid rgba(139,111,212,0.3)">${prova_qs} sessões c/ prova</span>` : ''}
+          <span class="badge badge-teal">5 sessões</span>
+        </div>
+        <div class="week-chevron">▼</div>
+      </div>
+      <div class="week-sessions">
+        <div class="session-row header-row">
+          <div class="sc">Sessão</div>
+          <div class="sc">Foco (30 min)</div>
+          <div class="sc">ABN</div>
+          <div class="sc">AAN 2026</div>
+          <div class="sc">Prova 2025</div>
+        </div>
+        ${week.sessions.map(s => `
+          <div class="session-row">
+            <div class="sc sc-num">${s.num}</div>
+            <div class="sc">
+              <div class="sc-title">${s.titulo}</div>
+              ${s.notas ? `<div class="sc-note">${s.notas}</div>` : ''}
+            </div>
+            <div class="sc sc-abn">${s.abn}</div>
+            <div class="sc sc-aan">${s.aan}</div>
+            <div class="sc sc-prova">${s.prova}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function toggleWeek(num) {
+  const el = document.getElementById(`week-${num}`);
+  el.classList.toggle('open');
+}
+
+function filterWeeks(block, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.week-item').forEach(item => {
+    if (block === 'all' || item.dataset.block === block) {
+      item.style.display = '';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+function scrollToBlock(id) {
+  filterWeeks(id, document.querySelector(`.filter-btn[onclick*="${id}"]`));
+  document.getElementById('weeks-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderWeekChecks() {
+  const container = document.getElementById('week-checks');
+  const saved = JSON.parse(localStorage.getItem('neuro-progress') || '{}');
+  container.innerHTML = '';
+  for (let i = 1; i <= 30; i++) {
+    const done = saved[i] || false;
+    const cb = document.createElement('div');
+    cb.className = `week-check ${done ? 'done' : ''}`;
+    cb.title = `Semana ${i}`;
+    cb.textContent = done ? '✓' : '';
+    cb.dataset.week = i;
+    cb.onclick = () => toggleCheck(i);
+    container.appendChild(cb);
+  }
+  updateProgress();
+}
+
+function toggleCheck(weekNum) {
+  const saved = JSON.parse(localStorage.getItem('neuro-progress') || '{}');
+  saved[weekNum] = !saved[weekNum];
+  localStorage.setItem('neuro-progress', JSON.stringify(saved));
+  renderWeekChecks();
+}
+
+function updateProgress() {
+  const saved = JSON.parse(localStorage.getItem('neuro-progress') || '{}');
+  const done = Object.values(saved).filter(Boolean).length;
+  const pct = Math.round((done / 30) * 100);
+  document.getElementById('done-count').textContent = done;
+  document.getElementById('remain-count').textContent = 30 - done;
+  document.getElementById('pct-count').textContent = pct + '%';
+  document.getElementById('main-bar').style.width = pct + '%';
+}
+
+renderWeeks();
+renderWeekChecks();
+</script>
+</body>
+</html>
