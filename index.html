@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plano de Estudos — Neurologia · 30 Semanas</title>
+<title>Plano de Estudos — Neurologia · R3 2027–28 + Título 2028</title>
 <style>
   :root {
     --bg: #0B0F1A;
@@ -435,8 +435,125 @@
     color: #fff;
   }
 
+  /* ── R3: DATAS / ESTÁGIOS ── */
+  .week-date {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    font-size: 0.7rem; color: var(--text3); margin-top: 5px;
+  }
+  .week-date .dot { color: var(--text3); }
+  .stage-chip, .ritmo-chip {
+    font-size: 0.62rem; padding: 1px 8px; border-radius: 20px;
+    font-weight: 600; letter-spacing: 0.03em; border: 1px solid; white-space: nowrap;
+  }
+  .wk-nota { color: var(--amber-l); font-size: 0.68rem; }
+  .week-item.free { background: transparent; border-style: dashed; }
+  .week-item.free .week-header { cursor: default; }
+  .week-item.free .week-header:hover { background: transparent; }
+  .week-item.current { border-color: var(--amber); box-shadow: 0 0 0 1px var(--amber) inset; }
+  .filter-label {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text3); align-self: center; min-width: 58px;
+  }
+  .week-filter + .week-filter { margin-top: -1.25rem; }
+  .filter-count { font-size: 0.75rem; color: var(--text3); margin: -1rem 0 1rem; }
+
+  /* ── LINHA DO TEMPO ── */
+  .tl-wrap {
+    background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+    padding: 1.25rem; overflow-x: auto;
+  }
+  .tl {
+    display: grid; grid-template-columns: 78px repeat(83, minmax(15px, 1fr));
+    min-width: 1360px; row-gap: 6px; font-size: 0.66rem; align-items: stretch;
+  }
+  .tl-rowlabel {
+    grid-column: 1; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text3); display: flex; align-items: center;
+  }
+  .tl-month { color: var(--text2); border-left: 1px solid var(--border2); padding-left: 4px; white-space: nowrap; }
+  .tl-stage {
+    border-radius: 6px; padding: 5px 6px; font-weight: 600; margin-right: 2px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-left: 3px solid;
+    cursor: pointer;
+  }
+  .tl-cell {
+    height: 24px; border-radius: 3px; margin-right: 2px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.58rem; font-weight: 700; color: rgba(0,0,0,0.65);
+    transition: transform 0.1s;
+  }
+  .tl-cell:hover { transform: scaleY(1.15); }
+  .tl-cell.free-reduzido { background: repeating-linear-gradient(135deg, rgba(232,168,69,0.35) 0 3px, rgba(232,168,69,0.12) 3px 6px); color: var(--amber-l); }
+  .tl-cell.free-revisao { background: repeating-linear-gradient(135deg, rgba(123,179,232,0.35) 0 3px, rgba(123,179,232,0.12) 3px 6px); color: var(--blue-l); }
+  .tl-cell.free-pausa { background: transparent; border: 1px dashed var(--border2); color: var(--text3); }
+  .tl-ritmo { height: 6px; border-radius: 2px; margin-right: 2px; align-self: center; }
+  .tl-mark {
+    font-size: 0.64rem; font-weight: 600; white-space: nowrap; padding: 2px 6px;
+    border-radius: 4px; border-left: 2px solid; align-self: center;
+  }
+  .tl-mark.end { justify-self: end; border-left: none; border-right: 2px solid; }
+  .tl-today { grid-row: 1 / -1; width: 2px; background: var(--amber); justify-self: center; border-radius: 1px; pointer-events: none; }
+  .tl-legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin-top: 1rem; font-size: 0.7rem; color: var(--text2); }
+  .tl-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+  .tl-stagegrid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1px;
+    background: var(--border); border-radius: 12px; overflow: hidden; margin-top: 1rem;
+  }
+  .tl-stagecard { background: var(--bg2); padding: 0.8rem 1rem; font-size: 0.75rem; cursor: pointer; }
+  .tl-stagecard:hover { background: var(--bg3); }
+  .tl-stagecard b { font-size: 0.8rem; }
+  .tl-stagecard .sub { color: var(--text3); font-size: 0.68rem; }
+  .tl-stagecard .blk { color: var(--text2); margin-top: 3px; }
+
+  /* ── RASTREADOR POR DATA ── */
+  .today-status { font-size: 0.8rem; color: var(--text2); margin-bottom: 1rem; }
+  .today-status b { color: var(--text); }
+  .cal-grid { display: flex; flex-direction: column; gap: 6px; }
+  .cal-month { display: flex; align-items: center; gap: 8px; }
+  .cal-mlabel { width: 52px; flex-shrink: 0; font-size: 0.68rem; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; }
+  .cal-cells { display: flex; flex-wrap: wrap; gap: 6px; }
+  .cal-cell {
+    width: 62px; border-radius: 6px; padding: 4px 6px; cursor: pointer;
+    border: 1px solid var(--border2); border-left: 3px solid; background: var(--bg2);
+    transition: background 0.12s;
+  }
+  .cal-cell:hover { background: var(--bg); }
+  .cal-d { font-size: 0.68rem; font-weight: 600; color: var(--text); }
+  .cal-p { font-size: 0.62rem; color: var(--text2); display: flex; justify-content: space-between; }
+  .cal-cell.done { background: rgba(82,183,136,0.18); border-color: var(--green); }
+  .cal-cell.done .cal-p::after { content: '✓'; color: var(--green-l); font-weight: 700; }
+  .cal-cell.current { outline: 2px solid var(--amber); outline-offset: 1px; }
+  .btn-ghost {
+    font-family: inherit; font-size: 0.72rem; padding: 4px 10px; border-radius: 20px;
+    border: 1px solid var(--border2); background: transparent; color: var(--text2); cursor: pointer;
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--amber); }
+  .tl-r3end { grid-row: 1 / -1; width: 0; border-left: 2px dashed var(--purple-l); opacity: 0.6; justify-self: start; pointer-events: none; }
+  .week-rplus { font-size: 0.7rem; color: #F5C87A; margin-top: 3px; }
+  .week-item.module { border-color: rgba(245,200,122,0.35); }
+  .cal-cell.post { background: rgba(184,164,232,0.06); }
+  .prev-wrap { overflow-x: auto; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; }
+  .prev-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; min-width: 820px; }
+  .prev-table th { text-align: left; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); padding: 0.7rem 0.8rem; border-bottom: 1px solid var(--border2); font-weight: 700; }
+  .prev-table th span { text-transform: none; letter-spacing: 0; font-weight: 500; }
+  .prev-table td { padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .prev-table tr:last-child td { border-bottom: none; }
+  .pv-dot { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 8px; }
+  .pv-n { font-weight: 700; } .pv-n span { color: var(--text3); font-weight: 500; font-size: 0.7rem; } .pv-zero { color: var(--text3); }
+  .pv-bar { height: 3px; background: var(--border2); border-radius: 2px; overflow: hidden; margin-top: 3px; width: 80px; }
+  .pv-bar i { display: block; height: 100%; }
+  .pv-tot { font-weight: 800; font-size: 0.9rem; }
+  .pv-prio { font-size: 0.68rem; font-weight: 700; border: 1px solid; border-radius: 4px; padding: 1px 6px; }
+  .pv-onde { color: var(--text2); font-size: 0.72rem; }
+  .rp-row { cursor: pointer; } .rp-row:hover { background: var(--bg3); }
+  .rp-gab { color: var(--text3); font-size: 0.68rem; margin-left: 4px; }
+  .block-when { font-size: 0.7rem; color: var(--amber-l); margin: -0.4rem 0 0.75rem; }
+
+  .header-title { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
   @media (max-width: 768px) {
     .hero { grid-template-columns: 1fr; }
+    .header-right { display: none; }
     .hero > :last-child { display: none; }
     h1 { font-size: 2rem; }
     .session-row { grid-template-columns: 1fr; }
@@ -451,11 +568,12 @@
 <header>
   <span class="logo">Neuro</span>
   <span class="header-sep">·</span>
-  <span class="header-title">Plano de Estudos 30 Semanas</span>
+  <span class="header-title">Plano de Estudos · R3 01/03/2027–29/02/2028 + Prova de Título 2028</span>
   <div class="header-right">
     <span class="badge badge-blue">ABN 3ª ed.</span>
     <span class="badge badge-teal">AAN 2026</span>
     <span class="badge badge-amber">Título 2025</span>
+    <span class="badge" style="background:rgba(224,92,92,0.15);color:#F4A4A4;border:1px solid rgba(224,92,92,0.3)">R+ UNIFESP · USP</span>
   </div>
 </header>
 
@@ -465,7 +583,7 @@
     <div>
       <p class="hero-eyebrow">Residência em Neurologia · UNIFESP</p>
       <h1>Formação do<br><em>Neurologista Geral</em></h1>
-      <p class="hero-sub">30 minutos por dia, 5 dias por semana, ao longo de 30 semanas. Cada sessão articula o Tratado da ABN, as aulas do Congresso da AAN 2026 e os gabaritos da Prova de Título 2025.</p>
+      <p class="hero-sub">30 minutos por dia, 5 dias por semana, ao longo de 30 semanas. Cada sessão articula o Tratado da ABN, as aulas do Congresso da AAN 2026 e os gabaritos da Prova de Título 2025. Redistribuído no R3 (01/03/2027–29/02/2028) em sincronia com os 11 estágios, com 5 módulos novos derivados das provas de R+ e reta final até a 2ª fase da Prova de Título (set/2028).</p>
       <div class="hero-stats">
         <div class="stat">
           <div class="stat-n" style="color:var(--blue)">150</div>
@@ -478,6 +596,10 @@
         <div class="stat">
           <div class="stat-n" style="color:var(--amber)">11</div>
           <div class="stat-l">blocos temáticos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n" style="color:var(--purple-l)">83</div>
+          <div class="stat-l">semanas até a 2ª fase</div>
         </div>
       </div>
     </div>
@@ -502,6 +624,13 @@
         <div>
           <div class="source-name">Prova de Título 2025</div>
           <div class="source-sub">102 questões gabaritadas</div>
+        </div>
+      </div>
+      <div class="source-row">
+        <div class="source-icon" style="background:rgba(224,92,92,0.12);color:var(--red)">🎯</div>
+        <div>
+          <div class="source-name">Provas de R+</div>
+          <div class="source-sub">UNIFESP 2025 (30 q) · USP Neurofisio 2026 (20 q)</div>
         </div>
       </div>
     </div>
@@ -576,15 +705,33 @@
   </div>
 </section>
 
+<!-- PREVALÊNCIA 3 PROVAS -->
+<section class="section" style="padding-top:0;" id="prevalencia">
+  <div class="section-eyebrow">Análise · Título 2025 + R+ UNIFESP 2025 + R+ USP Neurofisio 2026</div>
+  <h2>Prevalência por área nas 3 provas (152 questões)</h2>
+  <div class="prev-wrap"><table class="prev-table" id="prev-table"></table></div>
+  <p style="font-size:0.72rem;color:var(--text3);margin:0.6rem 0 1.25rem">Prioridade: A = ≥ 9 questões no Título · B = 5–8 no Título ou ≥ 4 na UNIFESP · C = demais. Clique numa questão para abrir a semana correspondente.</p>
+  <div class="append-grid" id="rplus-lists"></div>
+</section>
+
+<!-- LINHA DO TEMPO R3 -->
+<section class="section" style="padding-top:0;" id="timeline">
+  <div class="section-eyebrow">Calendário · R3 2027–28 + reta final Título 2028</div>
+  <h2>Linha do tempo do R3</h2>
+  <div class="tl-wrap"><div class="tl" id="tl"></div></div>
+  <div class="tl-legend" id="tl-legend"></div>
+  <div class="tl-stagegrid" id="tl-stages"></div>
+</section>
+
 <!-- PROGRESS TRACKER -->
 <section class="section" style="padding-top:0;">
   <div class="section-eyebrow">Acompanhamento</div>
   <h2>Meu progresso</h2>
   <div class="progress-section">
-    <div style="display:flex;gap:2rem;margin-bottom:1.5rem;">
+    <div style="display:flex;gap:2rem;margin-bottom:1rem;flex-wrap:wrap;">
       <div>
         <div style="font-size:2rem;font-weight:800;color:var(--green)" id="done-count">0</div>
-        <div style="font-size:0.75rem;color:var(--text2)">semanas concluídas</div>
+        <div style="font-size:0.75rem;color:var(--text2)">semanas do plano concluídas</div>
       </div>
       <div>
         <div style="font-size:2rem;font-weight:800;color:var(--text2)" id="remain-count">30</div>
@@ -594,11 +741,27 @@
         <div style="font-size:2rem;font-weight:800;color:var(--amber)" id="pct-count">0%</div>
         <div style="font-size:0.75rem;color:var(--text2)">concluído</div>
       </div>
+      <div>
+        <div style="font-size:2rem;font-weight:800;color:var(--blue-l)" id="expected-count">0</div>
+        <div style="font-size:0.75rem;color:var(--text2)">esperadas até hoje</div>
+      </div>
+      <div>
+        <div style="font-size:2rem;font-weight:800;color:var(--text2)" id="delta-count">0</div>
+        <div style="font-size:0.75rem;color:var(--text2)">saldo vs. calendário</div>
+      </div>
+      <div>
+        <div style="font-size:2rem;font-weight:800;color:#F5C87A" id="mods-count">0/5</div>
+        <div style="font-size:0.75rem;color:var(--text2)">módulos R+ concluídos</div>
+      </div>
     </div>
+    <div class="today-status" id="today-status"></div>
     <div class="progress-bar-bg" style="height:8px;margin-bottom:1.5rem;">
       <div class="progress-fill" id="main-bar" style="width:0%;background:linear-gradient(90deg,var(--blue),var(--teal))"></div>
     </div>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;" id="week-checks">
+    <div class="cal-grid" id="week-checks"></div>
+    <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-top:1rem;">
+      <button class="btn-ghost" onclick="goToCurrent()">Ir para a semana atual ↓</button>
+      <span style="font-size:0.7rem;color:var(--text3)">Clique na semana para marcar · P = semana do plano · M = módulo R+ · borda = ritmo · fundo lilás = pós-R3</span>
     </div>
   </div>
 </section>
@@ -726,7 +889,8 @@
   <div class="section-eyebrow">Plano Detalhado</div>
   <h2>Semana a semana</h2>
 
-  <div class="week-filter">
+  <div class="week-filter" id="block-filter">
+    <span class="filter-label">Bloco</span>
     <button class="filter-btn active" onclick="filterWeeks('all',this)">Todas as semanas</button>
     <button class="filter-btn" onclick="filterWeeks('semiologia',this)">Semiologia</button>
     <button class="filter-btn" onclick="filterWeeks('avc',this)">AVC</button>
@@ -739,7 +903,14 @@
     <button class="filter-btn" onclick="filterWeeks('neuroinfec',this)">Neuroinfecção</button>
     <button class="filter-btn" onclick="filterWeeks('sono',this)">Sono/Oftalmo</button>
     <button class="filter-btn" onclick="filterWeeks('revisao',this)">Revisão</button>
+    <button class="filter-btn" onclick="filterWeeks('modulo',this)">Módulos R+</button>
+    <button class="filter-btn" onclick="filterWeeks('_free',this)">Semanas livres / reta final</button>
   </div>
+  <div class="week-filter" id="stage-filter">
+    <span class="filter-label">Estágio</span>
+    <button class="filter-btn active" onclick="filterStage('all',this)">Todos</button>
+  </div>
+  <div class="filter-count" id="filter-count"></div>
 
   <div class="weeks-list" id="weeks-list"></div>
 </section>
@@ -801,8 +972,8 @@
 </section>
 
 <footer>
-  Plano de Estudos · Neurologia · Residência UNIFESP · 30 semanas · 30 min/dia<br>
-  Fontes: Tratado ABN 3ª ed. 2025 · AAN Annual Meeting 2026 · Prova de Título de Neurologia 2025
+  Plano de Estudos · Neurologia · Residência UNIFESP · 30 semanas · 30 min/dia · R3 01/03/2027–29/02/2028 + reta final Título (mar–set/2028)<br>
+  Fontes: Tratado ABN 3ª ed. 2025 · AAN Annual Meeting 2026 · Prova de Título de Neurologia 2025 · R+ UNIFESP 2025 · R+ USP Neurofisiologia 2026
 </footer>
 
 <script>
@@ -1079,40 +1250,339 @@ const WEEKS_DATA = [
   },
 ];
 
-function renderWeeks() {
-  const container = document.getElementById('weeks-list');
-  container.innerHTML = '';
+// ═══════════ R3 (01/03/2027–29/02/2028) + RETA FINAL TÍTULO 2028 ═══════════
+const DAY = 86400000;
+const ymd = s => { const [y, m, d] = s.split('-').map(Number); return Date.UTC(y, m - 1, d); };
+const R3_START = ymd('2027-03-01'), R3_END = ymd('2028-02-29');
+const MESES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+const pad = n => String(n).padStart(2, '0');
+const fmt = t => { const x = new Date(t); return pad(x.getUTCDate()) + '/' + pad(x.getUTCMonth() + 1); };
+const fmtY = t => fmt(t) + '/' + String(new Date(t).getUTCFullYear()).slice(2);
+const mesAno = t => { const x = new Date(t); return MESES[x.getUTCMonth()] + '/' + String(x.getUTCFullYear()).slice(2); };
+const todayT = (() => { const n = new Date(); return Date.UTC(n.getFullYear(), n.getMonth(), n.getDate()); })();
 
-  WEEKS_DATA.forEach(week => {
-    const div = document.createElement('div');
-    div.className = 'week-item';
-    div.dataset.block = week.id;
-    div.id = `week-${week.num}`;
+// Estágios do R3 + fases pós-R3
+const STAGES = [
+  {id:'ps1',     curto:'PS',          nome:'Pronto-Socorro',                   ini:'2027-03-01', fim:'2027-03-16', cor:'#E05C5C', tema:'AVC I–II (fase aguda, prevenção, hemorrágico)'},
+  {id:'ext1',    curto:'Extrapir.',   nome:'Extrapiramidal',                   ini:'2027-03-17', fim:'2027-04-04', cor:'#2EC4A6', tema:'Movimento I–II + Semiologia III (movimento, EEG/EMG)'},
+  {id:'nm',      curto:'Neuromusc',   nome:'Neuromuscular',                    ini:'2027-04-05', fim:'2027-05-09', cor:'#8B6FD4', tema:'NM I–II + ELA + Módulos A–B (USP)'},
+  {id:'ferias',  curto:'Férias',      nome:'Férias',                           ini:'2027-05-10', fim:'2027-06-20', cor:'#555F70', tema:'Revisão leve'},
+  {id:'cogsono', curto:'Cog/Sono',    nome:'Cognição/Sono',                    ini:'2027-06-21', fim:'2027-08-01', cor:'#C084FC', tema:'Cognitiva + Sono + Cefaleia'},
+  {id:'eletivo', curto:'Eletivo',     nome:'Eletivo · Neurofisiologia',        ini:'2027-08-02', fim:'2027-09-12', cor:'#38BDF8', tema:'EEG/ENMG (reduzido)'},
+  {id:'ext2',    curto:'Extrapir.',   nome:'Extrapiramidal',                   ini:'2027-09-13', fim:'2027-10-03', cor:'#2EC4A6', tema:'Módulos C–E (movimento, neurogenética, tóxico-metabólicas)'},
+  {id:'ps2',     curto:'PS',          nome:'Pronto-Socorro',                   ini:'2027-10-04', fim:'2027-10-24', cor:'#E05C5C', tema:'AVC III + Neurointensivismo + Neuroinfecção I'},
+  {id:'geral',   curto:'Geral/IC',    nome:'Geral + Interconsulta',            ini:'2027-10-25', fim:'2027-12-05', cor:'#52B788', tema:'Semiologia I–II + Neuroinfecção II + provas R+'},
+  {id:'desmi',   curto:'Desmi/Onco',  nome:'Desmielinizantes/Neuro-oncologia', ini:'2027-12-06', fim:'2028-01-23', cor:'#4A90D9', tema:'Neuroimunologia + Neuroftalmo + Revisão Integrada I'},
+  {id:'epi',     curto:'Epilepsia',   nome:'Epilepsia',                        ini:'2028-01-24', fim:'2028-02-29', cor:'#E8A845', tema:'Epilepsia I–IV + simulado de base'},
+  {id:'tit1',    curto:'Pós · Revisão',  nome:'Pós-R3 · Revisão por prevalência',        ini:'2028-03-01', fim:'2028-05-28', cor:'#B8A4E8', tema:'2ª passada por área, em ordem de peso'},
+  {id:'tit2',    curto:'Pós · 1ª fase',  nome:'Pós-R3 · Simulados + 1ª fase (teórica)',  ini:'2028-05-29', fim:'2028-07-23', cor:'#F5C87A', tema:'Simulados, lacunas, prova teórica (jul)'},
+  {id:'tit3',    curto:'Pós · 2ª fase',  nome:'Pós-R3 · 2ª fase (multimídia + prática)', ini:'2028-07-24', fim:'2028-10-01', cor:'#F0A58A', tema:'Neuroimagem, vídeos, EEG/ENMG, exame prático'},
+];
+STAGES.forEach(s => { s.t0 = ymd(s.ini); s.t1 = ymd(s.fim); });
+const PLAN_END = STAGES[STAGES.length - 1].t1;
 
-    const prova_qs = week.sessions.filter(s => s.prova && s.prova !== '—').length;
+const RITMO = {
+  normal:   {nome:'Normal',   desc:'5 sessões',               cor:'#52B788', icon:'●'},
+  reduzido: {nome:'Reduzido', desc:'2–3 sessões',             cor:'#E8A845', icon:'½'},
+  revisao:  {nome:'Revisão',  desc:'sem conteúdo novo',       cor:'#7BB3E8', icon:'↺'},
+  pausa:    {nome:'Pausa',    desc:'livre / semana de prova', cor:'#555F70', icon:'—'},
+};
 
-    div.innerHTML = `
-      <div class="week-header" onclick="toggleWeek(${week.num})">
-        <div class="week-num-badge" style="background:${week.color}22;color:${week.color};border:1px solid ${week.color}44">
-          ${week.num}
-        </div>
-        <div class="week-info">
-          <div class="week-title">${week.title}</div>
-          <div class="week-sub">${week.sub}</div>
-        </div>
-        <div class="week-meta">
-          ${prova_qs > 0 ? `<span class="badge" style="background:rgba(139,111,212,0.15);color:#B8A4E8;border:1px solid rgba(139,111,212,0.3)">${prova_qs} sessões c/ prova</span>` : ''}
-          <span class="badge badge-teal">5 sessões</span>
-        </div>
-        <div class="week-chevron">▼</div>
-      </div>
+const BLOCK_META = {
+  avc:          {nome:'AVC / Neurointensivo', cor:'#52B788'},
+  semiologia:   {nome:'Semiologia',           cor:'#6EDEC9'},
+  movimento:    {nome:'Movimento + ELA',      cor:'#2EC4A6'},
+  neuromuscular:{nome:'Neuromuscular',        cor:'#8B6FD4'},
+  modulo:       {nome:'Módulos R+ (A–E)',     cor:'#F5C87A'},
+  cognitiva:    {nome:'Cognitiva',            cor:'#C084FC'},
+  sono:         {nome:'Sono / Neuroftalmo',   cor:'#38BDF8'},
+  cefaleia:     {nome:'Cefaleia',             cor:'#E07A5F'},
+  neuroinfec:   {nome:'Neuroinfecção',        cor:'#E05C5C'},
+  neuroimuno:   {nome:'Neuroimunologia',      cor:'#4A90D9'},
+  revisao:      {nome:'Revisão integrada',    cor:'#888780'},
+  epilepsia:    {nome:'Epilepsia',            cor:'#E8A845'},
+};
+
+// ── Módulos novos, compostos a partir das provas de R+ (não alteram as 30 semanas originais)
+const MODULES = {
+  MA: {letra:'A', title:'Módulo A — Nervo periférico: anatomia aplicada', sub:'USP Neurofisio: 55% das questões são nervo periférico/plexo/anatomia. Base para ENMG e para a prova prática.',
+    sessions:[
+      {num:'S1', titulo:'Plexo braquial: raízes, troncos, cordões; lesão de tronco superior (Erb)', abn:'—', aan:'C26 – Skills: NCS', prova:'USP Q12', notas:'Abdução do ombro + flexão do cotovelo + bicipital abolido = C5–C6 / tronco superior'},
+      {num:'S2', titulo:'Radial e mediano: músculos, túnel do carpo, síndrome do supinador', abn:'Cap. 114', aan:'C26 – Skills: NCS', prova:'USP Q4, Q9, Q17 · Título Q19', notas:'Flexor radial do carpo = mediano; supinador = interósseo posterior'},
+      {num:'S3', titulo:'Ulnar, desfiladeiro torácico neurogênico, miótomos C5–T1', abn:'Cap. 114', aan:'C26 – Skills: NCS', prova:'USP Q18, Q20', notas:'Abdutor curto do polegar = C8–T1; desfiladeiro = tenar + sensibilidade medial'},
+      {num:'S4', titulo:'Membro inferior: femoral/safeno, fibular, tibial, cutâneo femoral lateral', abn:'Cap. 114', aan:'C26 – Skills: NCS', prova:'USP Q11 · Título Q33', notas:'Safeno = ramo sensitivo terminal do femoral; fibular × L5 (inversão)'},
+      {num:'S5', titulo:'Diferencial musculoesquelético: De Quervain, manguito rotador, Guyon', abn:'—', aan:'—', prova:'USP Q7, Q8', notas:'Baixo peso para o Título; alto para R+ USP (fisiatria + neurologia)'},
+    ]},
+  MB: {letra:'B', title:'Módulo B — Neurocondução, reflexos e reabilitação', sub:'Fundamentos de ENMG + lesão medular e reabilitação (USP). Prepara o eletivo de neurofisiologia.',
+    sessions:[
+      {num:'S1', titulo:'Neurocondução: amplitude, latências, velocidade, duração', abn:'Cap. 8', aan:'C26 – Skills: NCS', prova:'USP Q1', notas:'Amplitude ∝ número de fibras estimuladas'},
+      {num:'S2', titulo:'Desmielinização: bloqueio de condução e dispersão temporal (adquirida × hereditária)', abn:'Caps. 8, 120', aan:'C69 – Demyelinating Neuropathies', prova:'USP Q2 · Título Q67', notas:'Bloqueio/dispersão = adquirida; CMT1 = lentificação uniforme'},
+      {num:'S3', titulo:'Reflexos H, F e de piscar; doença do corno anterior (pólio, ELA)', abn:'Caps. 8, 108', aan:'C75 – Motor Neuron Disease', prova:'USP Q5, Q10', notas:'Piscar: aferente V1 (supraorbital) → eferente VII'},
+      {num:'S4', titulo:'Lesão medular traumática: ASIA, disreflexia autonômica, ossificação heterotópica', abn:'Cap. 11', aan:'C38 – Myelopathies', prova:'USP Q6, Q14, Q15', notas:'Disreflexia: lesões acima de T6'},
+      {num:'S5', titulo:'Neurorreabilitação pediátrica: paralisia cerebral e GMFCS', abn:'—', aan:'S17 – Neuro-rehab', prova:'USP Q16', notas:'Baixo peso para o Título'},
+    ]},
+  MC: {letra:'C', title:'Módulo C — Movimento: consolidação e formas secundárias', sub:'UNIFESP: 23% das questões em distúrbios do movimento. Hipocinéticos + hipercinéticos + vídeo para a 2ª fase.',
+    sessions:[
+      {num:'S1', titulo:'DP: fase prodrômica, critérios, diagnóstico clínico × exames', abn:'Cap. 59', aan:'C7 – Parkinson Assessment', prova:'UNIFESP Q1, Q5', notas:'Pré-motor: hiposmia, constipação, RBD'},
+      {num:'S2', titulo:'Complicações do tratamento: TCI com agonistas, discinesias, flutuações', abn:'Cap. 59', aan:'S11 – Movement Disorders', prova:'UNIFESP Q6 · Título Q34', notas:'Hipersexualidade/jogo patológico = agonista dopaminérgico'},
+      {num:'S3', titulo:'Distonias do adulto e coreias secundárias (hiperglicemia, Sydenham, autoimunes)', abn:'Caps. 61–62', aan:'C120 – Dystonias · C128 – Huntington & Choreas', prova:'UNIFESP Q2, Q3, Q4', notas:'Distonia adulta: focal cranial/cervical'},
+      {num:'S4', titulo:'Transtornos funcionais do movimento', abn:'Caps. 27, 83', aan:'C54 – Functional Movement Disorders', prova:'Título Q92', notas:'Sinais positivos: distratibilidade, entrainment'},
+      {num:'S5', titulo:'Fenomenologia em vídeo: tremor, distonia, coreia, mioclonia, tiques', abn:'Cap. 13', aan:'C45 – Unusual Movement Disorders', prova:'— (2ª fase multimídia)', notas:'Montar banco de vídeos para a prova multimídia'},
+    ]},
+  MD: {letra:'D', title:'Módulo D — Neurogenética, neurometabólicas e neurocutâneas', sub:'UNIFESP: 5/30 questões, área ausente no plano original. Ataxias e Huntington dialogam com o estágio extrapiramidal.',
+    sessions:[
+      {num:'S1', titulo:'Testes genéticos: expansão de repetição, cariótipo, CGH-array, exoma, genoma', abn:'—', aan:'—', prova:'UNIFESP Q21, Q23', notas:'Doença de repetição suspeita → teste específico de expansão'},
+      {num:'S2', titulo:'Huntington e ataxias hereditárias (SCA, Friedreich)', abn:'Cap. 62', aan:'C128 – Huntington & Choreas', prova:'UNIFESP Q21', notas:'Coreia + declínio cognitivo + depressão + herança dominante'},
+      {num:'S3', titulo:'Leucodistrofias: metacromática, adrenoleucodistrofia, Krabbe, Alexander', abn:'—', aan:'—', prova:'UNIFESP Q22, Q24', notas:'ALD: substância branca posterior; AGCML; arilsulfatase'},
+      {num:'S4', titulo:'Mitocondriais e acúmulo de metais: MELAS, POLG, Wilson, PKAN', abn:'Caps. 66–67', aan:'C45 – Unusual Movement Disorders', prova:'UNIFESP Q28 · Título Q35, Q54', notas:'Valproato: evitar em suspeita mitocondrial'},
+      {num:'S5', titulo:'Neurocutâneas (NF1, NF2, esclerose tuberosa) e síndrome de Down', abn:'—', aan:'C83 – Brain Tumors', prova:'UNIFESP Q15, Q19', notas:'NF2: schwannomas vestibulares'},
+    ]},
+  ME: {letra:'E', title:'Módulo E — Tóxico-metabólicas e neurologia clínica', sub:'UNIFESP: álcool e encefalopatia hepática. Reforça Plano 7 S5 e Plano 29 S3–S4.',
+    sessions:[
+      {num:'S1', titulo:'Álcool: Wernicke-Korsakoff, Marchiafava-Bignami, mielinólise pontina', abn:'Cap. 165', aan:'C141 – CNS Toxicities', prova:'UNIFESP Q26 · Título Q31', notas:'Oftalmoparesia + ataxia + confusão = Wernicke'},
+      {num:'S2', titulo:'Encefalopatia hepática e degeneração hepatocerebral adquirida', abn:'Cap. 165', aan:'C141 – CNS Toxicities', prova:'UNIFESP Q25', notas:'Hipersinal T1 em pálido; amônia; espectroscopia'},
+      {num:'S3', titulo:'Movimentos anormais metabólicos e induzidos por drogas', abn:'Cap. 64', aan:'C45 – Unusual Movement Disorders', prova:'UNIFESP Q3 · Título Q20', notas:'Hemicoreia hiperglicêmica; SNM × serotoninérgica'},
+      {num:'S4', titulo:'Deficiências nutricionais: B12, cobre, tiamina, pós-bariátrica', abn:'Cap. 169', aan:'C38 – Myelopathies', prova:'Título Q89', notas:'Mieloneuropatia por cobre imita B12'},
+      {num:'S5', titulo:'Porfiria e encefalopatias metabólicas (sódio, glicose, urêmica)', abn:'Cap. 165', aan:'C141 – CNS Toxicities', prova:'Título Q42, Q102', notas:'Porfiria: evitar indutores enzimáticos'},
+    ]},
+};
+Object.values(MODULES).forEach(m => { m.color = BLOCK_META.modulo.cor; m.id = 'modulo'; });
+
+// ── Questões R+ (UNIFESP Neurologia Ano Opcional 2025 · USP Neurofisiologia Clínica 2026)
+const RPLUS = [
+  {p:'U',n:1, area:'mov',  tema:'DP: manifestações pré-motoras',          gab:'D', alvo:18},
+  {p:'U',n:2, area:'mov',  tema:'Distonia do adulto: formas mais comuns',  gab:'C', alvo:19},
+  {p:'U',n:3, area:'mov',  tema:'Hemicoreia por hiperglicemia não cetótica', gab:'A', alvo:'MC'},
+  {p:'U',n:4, area:'mov',  tema:'Coreia de Sydenham',                     gab:'B', alvo:19},
+  {p:'U',n:5, area:'mov',  tema:'DP: critério diagnóstico mais fidedigno', gab:'A', alvo:18},
+  {p:'U',n:6, area:'mov',  tema:'DP: hipersexualidade por agonista',      gab:'A', alvo:18},
+  {p:'U',n:7, area:'cog',  tema:'Demência rapidamente progressiva',       gab:'C', alvo:22},
+  {p:'U',n:8, area:'epi',  tema:'NORSE: etiologia e conduta',             gab:'B', alvo:10},
+  {p:'U',n:9, area:'cef',  tema:'HII induzida por drogas',                gab:'D', alvo:14},
+  {p:'U',n:10,area:'nm',   tema:'Miastenia: prognóstico/crise',           gab:'D', alvo:24},
+  {p:'U',n:11,area:'imuno',tema:'LMP e DMTs na EM',                       gab:'D', alvo:16},
+  {p:'U',n:12,area:'avc',  tema:'Morte encefálica (normas brasileiras)',  gab:'A', alvo:7},
+  {p:'U',n:13,area:'imuno',tema:'Neurite óptica + Sjögren → AQP4',        gab:'B', alvo:16},
+  {p:'U',n:14,area:'avc',  tema:'PA pós-trombólise (AHA/ASA)',            gab:'A', alvo:4},
+  {p:'U',n:15,area:'genet',tema:'NF2 e tumores intracranianos',           gab:'A', alvo:'MD'},
+  {p:'U',n:16,area:'avc',  tema:'Vasoespasmo pós-HSA',                    gab:'D', alvo:5},
+  {p:'U',n:17,area:'avc',  tema:'ESUS: definição',                        gab:'A', alvo:4},
+  {p:'U',n:18,area:'avc',  tema:'HIC: manejo inicial',                    gab:'B', alvo:5},
+  {p:'U',n:19,area:'genet',tema:'Síndrome de Down: lesão medular',        gab:'A', alvo:'MD'},
+  {p:'U',n:20,area:'avc',  tema:'Trombectomia em janela estendida',       gab:'D', alvo:4},
+  {p:'U',n:21,area:'mov',  tema:'Huntington: teste diagnóstico',          gab:'C', alvo:'MD'},
+  {p:'U',n:22,area:'genet',tema:'ALD: lesões posteriores de substância branca', gab:'B', alvo:'MD'},
+  {p:'U',n:23,area:'genet',tema:'Deficiência intelectual: 1º teste genético', gab:'A', alvo:'MD'},
+  {p:'U',n:24,area:'genet',tema:'Investigação de leucodistrofia',         gab:'B', alvo:'MD'},
+  {p:'U',n:25,area:'tox',  tema:'Encefalopatia hepática',                 gab:'C', alvo:'ME'},
+  {p:'U',n:26,area:'tox',  tema:'Etilismo: complicações neurológicas',    gab:'A', alvo:'ME'},
+  {p:'U',n:27,area:'oft',  tema:'Síndrome do seio cavernoso',             gab:'D', alvo:28},
+  {p:'U',n:28,area:'epi',  tema:'FAE a evitar em doença mitocondrial',    gab:'C', alvo:9},
+  {p:'U',n:29,area:'avc',  tema:'Infarto medular pós-cirurgia de aorta',  gab:'B', alvo:1},
+  {p:'U',n:30,area:'infec',tema:'Neurossarcoidose (paquimeningite)',      gab:'A', alvo:26},
+  {p:'S',n:1, area:'nm',   tema:'Neurocondução: parâmetro ∝ nº de fibras', alvo:'MB'},
+  {p:'S',n:2, area:'nm',   tema:'Bloqueio de condução / dispersão temporal', alvo:'MB'},
+  {p:'S',n:3, area:'epi',  tema:'Fusos do sono na infância (EEG)',        alvo:27},
+  {p:'S',n:4, area:'nm',   tema:'Músculo não inervado pelo radial',       alvo:'MA'},
+  {p:'S',n:5, area:'nm',   tema:'Poliomielite: corno anterior',           alvo:'MB'},
+  {p:'S',n:6, area:'reab', tema:'Ossificação heterotópica pós-LM',        alvo:'MB'},
+  {p:'S',n:7, area:'reab', tema:'Tenossinovite de De Quervain',           alvo:'MA'},
+  {p:'S',n:8, area:'reab', tema:'Manguito rotador',                       alvo:'MA'},
+  {p:'S',n:9, area:'nm',   tema:'Conteúdo do túnel do carpo',             alvo:'MA'},
+  {p:'S',n:10,area:'nm',   tema:'Reflexo de piscar',                      alvo:'MB'},
+  {p:'S',n:11,area:'nm',   tema:'Nervo safeno',                           alvo:'MA'},
+  {p:'S',n:12,area:'nm',   tema:'Plexo braquial: tronco superior',        alvo:'MA'},
+  {p:'S',n:13,area:'epi',  tema:'Síndrome de Dravet',                     alvo:8},
+  {p:'S',n:14,area:'reab', tema:'Disreflexia autonômica',                 alvo:'MB'},
+  {p:'S',n:15,area:'reab', tema:'Escala ASIA',                            alvo:'MB'},
+  {p:'S',n:16,area:'reab', tema:'Paralisia cerebral: GMFCS',              alvo:'MB'},
+  {p:'S',n:17,area:'nm',   tema:'Síndrome do supinador',                  alvo:'MA'},
+  {p:'S',n:18,area:'nm',   tema:'Raízes do abdutor curto do polegar',     alvo:'MA'},
+  {p:'S',n:19,area:'sono', tema:'Neurobiologia do sono',                  alvo:27},
+  {p:'S',n:20,area:'nm',   tema:'Desfiladeiro torácico neurogênico',      alvo:'MA'},
+];
+const PROVA_NOME = {U:'UNIFESP', S:'USP'};
+
+// Áreas: contagem da Prova de Título 2025 (já no plano) + R+ (calculada de RPLUS)
+const AREAS = [
+  {k:'nm',    nome:'Neuromuscular / nervo periférico / ENMG', t:14, cor:'#8B6FD4', onde:'NM (abr–mai/27) · Módulos A–B · Eletivo · Reta final 1–2'},
+  {k:'imuno', nome:'Neuroimunologia',                         t:12, cor:'#4A90D9', onde:'Desmi/Onco (dez/27–jan/28) · Reta final 3–4'},
+  {k:'mov',   nome:'Distúrbios do movimento',                 t:10, cor:'#2EC4A6', onde:'Extrapiramidal (mar/27 e set/27) · Módulo C · Reta final 5'},
+  {k:'avc',   nome:'AVC / neurointensivismo',                 t:10, cor:'#52B788', onde:'PS (mar/27 e out/27) · Reta final 6'},
+  {k:'epi',   nome:'Epilepsia / EEG',                         t:9,  cor:'#E8A845', onde:'Eletivo (EEG) · Epilepsia (jan–fev/28) · Reta final 7'},
+  {k:'cef',   nome:'Cefaleias',                               t:9,  cor:'#E07A5F', onde:'Cog/Sono (jul/27) · Reta final 8'},
+  {k:'cog',   nome:'Neurologia cognitiva',                    t:9,  cor:'#C084FC', onde:'Cog/Sono (jun–jul/27) · Reta final 9'},
+  {k:'oft',   nome:'Neuroftalmo / neuro-otologia',            t:8,  cor:'#7BB3E8', onde:'Desmi/Onco (jan/28) · Reta final 10 · 2ª fase'},
+  {k:'sono',  nome:'Sono',                                    t:7,  cor:'#38BDF8', onde:'Cog/Sono (jul/27) · Reta final 10'},
+  {k:'infec', nome:'Neuroinfecção / inflamatórias',           t:6,  cor:'#E05C5C', onde:'PS (out/27) · Geral/IC (nov/27) · Reta final 11'},
+  {k:'semio', nome:'Semiologia / anatomia',                   t:5,  cor:'#8A95A8', onde:'Extrapiramidal (abr/27) · Geral/IC (out–nov/27) · 2ª fase prática'},
+  {k:'genet', nome:'Neurogenética / neurometabólicas',        t:0,  cor:'#F5C87A', onde:'Módulo D (set/27) · Reta final 12'},
+  {k:'tox',   nome:'Tóxico-metabólicas',                      t:0,  cor:'#F0A58A', onde:'Módulo E (set/27) · Plano 7, 29 · Reta final 11'},
+  {k:'reab',  nome:'Reabilitação / lesão medular / musculoesq.', t:0, cor:'#8A95A8', onde:'Módulos A–B (abr–mai/27) · baixo peso p/ Título'},
+  {k:'outros',nome:'Outros',                                  t:3,  cor:'#555F70', onde:'—'},
+];
+AREAS.forEach(a => {
+  a.u = RPLUS.filter(q => q.p === 'U' && q.area === a.k).length;
+  a.s = RPLUS.filter(q => q.p === 'S' && q.area === a.k).length;
+  a.tot = a.t + a.u + a.s;
+  a.prio = a.t >= 9 ? 'A' : (a.t >= 5 || a.u >= 4) ? 'B' : 'C';
+});
+
+// ── Calendário semanal (seg–dom). plan = semana original (conteúdo intacto); mod = módulo novo
+const CAL_RAW = [
+  /* 1 */ {plan:4,  nota:'PS: AVC na fase aguda'},
+  /* 2 */ {plan:5},
+  /* 3 */ {plan:18, nota:'Transição PS → Extrapiramidal (16→17/03) · hipocinéticos'},
+  /* 4 */ {plan:19, nota:'Hipercinéticos'},
+  /* 5 */ {plan:3,  nota:'Semiologia do movimento + EEG/EMG básico antes de NM (fora das semanas de PS)'},
+  /* 6 */ {plan:23},
+  /* 7 */ {plan:24},
+  /* 8 */ {plan:20, nota:'ELA/AME no estágio NM'},
+  /* 9 */ {mod:'MA', nota:'Prevalência USP'},
+  /*10 */ {mod:'MB', nota:'Prevalência USP'},
+  /*11 */ {ritmo:'pausa',    titulo:'Férias — semana livre',  foco:'Descanso total, sem estudo. Semana movível dentro das férias.'},
+  /*12 */ {ritmo:'reduzido', titulo:'Férias — revisão leve',  foco:'3 sessões · flashcards AVC I–II (Plano 4–5) · áudio AAN C6, S10'},
+  /*13 */ {ritmo:'reduzido', titulo:'Férias — revisão leve',  foco:'3 sessões · flashcards Semiologia III + Movimento (Plano 3, 18–19) · áudio AAN C67, C45'},
+  /*14 */ {ritmo:'reduzido', titulo:'Férias — revisão leve',  foco:'3 sessões · flashcards NM + ELA (Plano 23–24, 20) · áudio AAN C69, C191, C75'},
+  /*15 */ {ritmo:'reduzido', titulo:'Férias — revisão leve',  foco:'2 sessões · flashcards Módulos A–B (nervo periférico, neurocondução)'},
+  /*16 */ {ritmo:'reduzido', titulo:'Férias — reaquecimento', foco:'2 sessões · refazer questões da Prova 2025 de AVC, NM e Movimento'},
+  /*17 */ {plan:21},
+  /*18 */ {plan:22},
+  /*19 */ {plan:27, nota:'Sono separado de Neuroftalmo (Plano 28 → jan/28)'},
+  /*20 */ {plan:12, nota:'Bloco sem estágio · espaço livre de Cog/Sono'},
+  /*21 */ {plan:13, nota:'Bloco sem estágio'},
+  /*22 */ {plan:14, nota:'Bloco sem estágio'},
+  /*23 */ {ritmo:'reduzido', titulo:'Eletivo — EEG I',                   foco:'2–3 sessões · refazer Plano 3 S3 (variantes normais) + AAN C92 · traçados do estágio'},
+  /*24 */ {ritmo:'reduzido', titulo:'Eletivo — EEG II',                  foco:'2–3 sessões · AAN C103 (EEG anormal) + C34 (EEG em UTI) · USP Q3 (fusos do sono)'},
+  /*25 */ {ritmo:'reduzido', titulo:'Eletivo — ENMG I',                  foco:'2–3 sessões · refazer Módulo B S1–S3 + Plano 3 S4 + AAN C26 · USP Q1, Q2, Q10'},
+  /*26 */ {ritmo:'reduzido', titulo:'Eletivo — ENMG II',                 foco:'2–3 sessões · refazer Módulo A com casos do estágio · USP Q4, Q9, Q12, Q17, Q18, Q20'},
+  /*27 */ {ritmo:'reduzido', titulo:'Eletivo — EEG neonatal/pediátrico', foco:'2–3 sessões · AAN C118 · USP Q13 (Dravet)'},
+  /*28 */ {ritmo:'reduzido', titulo:'Eletivo — síntese EEG/ENMG',        foco:'2–3 sessões · resumo próprio + Prova 2025 Q3, Q19, Q33, Q72, Q90'},
+  /*29 */ {mod:'MC', nota:'Prevalência UNIFESP (movimento 23%)'},
+  /*30 */ {mod:'MD', nota:'Área ausente no plano original'},
+  /*31 */ {mod:'ME', nota:'⚑ Inscrições R+ (~out)'},
+  /*32 */ {plan:6},
+  /*33 */ {plan:7,  nota:'Neurointensivismo no PS (fora da Interconsulta)'},
+  /*34 */ {plan:25, nota:'Meningites/encefalites: emergência do PS'},
+  /*35 */ {plan:1,  nota:'Semiologia geral no estágio Geral'},
+  /*36 */ {plan:2},
+  /*37 */ {plan:26, nota:'Neurossarcoidose/meningites crônicas: perfil de interconsulta'},
+  /*38 */ {ritmo:'revisao',  titulo:'Revisão R+ — provas anteriores',     foco:'Refazer UNIFESP (30 q) e USP (20 q) cronometradas · revisar erros pelos Módulos A–E'},
+  /*39 */ {ritmo:'pausa',    titulo:'Prova R+ UNIFESP (~fim nov)',          foco:'Sem conteúdo novo · flashcards leves'},
+  /*40 */ {ritmo:'pausa',    titulo:'Prova R+ USP-SP Neurofisio (~início dez)', foco:'Sem conteúdo novo'},
+  /*41 */ {ritmo:'pausa',    titulo:'Reserva USP-SP / descanso',            foco:'Se a prova cair em 06–12/12: semana de prova. Senão: descanso ou adiantar Plano 15.'},
+  /*42 */ {plan:15},
+  /*43 */ {plan:16},
+  /*44 */ {ritmo:'pausa',    titulo:'Recesso de fim de ano',                foco:'27/12–02/01 · livre'},
+  /*45 */ {plan:17},
+  /*46 */ {plan:28, nota:'Neuroftalmo junto de neurite óptica/NMOSD'},
+  /*47 */ {plan:29, nota:'S5 complicações oncológicas ↔ neuro-oncologia'},
+  /*48 */ {plan:8},
+  /*49 */ {plan:9},
+  /*50 */ {plan:10},
+  /*51 */ {plan:11},
+  /*52 */ {plan:30, nota:'Simulado de base → define lacunas da reta final'},
+  /*53 */ {ritmo:'revisao',  titulo:'Fim do R3 (29/02) · transição',        foco:'Erros do simulado (Plano 30) → reordenar reta final por lacunas · acompanhar edital do Título'},
+  // ── Pós-R3 · Fase 1: revisão por prevalência (ordem = peso na Prova de Título)
+  /*54 */ {ritmo:'revisao', titulo:'Reta final 1 — Neuromuscular I',       foco:'Plano 23 + Módulos A–B · refazer as 14 questões de NM do Título'},
+  /*55 */ {ritmo:'revisao', titulo:'Reta final 2 — Neuromuscular II + ELA', foco:'Plano 24, 20 · UNIFESP Q10'},
+  /*56 */ {ritmo:'revisao', titulo:'Reta final 3 — Neuroimunologia I',     foco:'Plano 15–16 · UNIFESP Q11, Q13'},
+  /*57 */ {ritmo:'revisao', titulo:'Reta final 4 — Neuroimunologia II',    foco:'Plano 17 · MOGAD, encefalites autoimunes, paraneoplásicas'},
+  /*58 */ {ritmo:'revisao', titulo:'Reta final 5 — Distúrbios do movimento', foco:'Plano 18–19 + Módulo C · UNIFESP Q1–Q6, Q21'},
+  /*59 */ {ritmo:'revisao', titulo:'Reta final 6 — AVC + neurointensivismo', foco:'Plano 4–7 · UNIFESP Q12, Q14, Q16–Q18, Q20, Q29'},
+  /*60 */ {ritmo:'revisao', titulo:'Reta final 7 — Epilepsia',             foco:'Plano 8–11 · UNIFESP Q8, Q28 · USP Q13'},
+  /*61 */ {ritmo:'revisao', titulo:'Reta final 8 — Cefaleias',             foco:'Plano 12–14 · UNIFESP Q9'},
+  /*62 */ {ritmo:'revisao', titulo:'Reta final 9 — Neurologia cognitiva',  foco:'Plano 21–22 · UNIFESP Q7'},
+  /*63 */ {ritmo:'revisao', titulo:'Reta final 10 — Neuroftalmo + Sono',   foco:'Plano 27–28 · UNIFESP Q27 · USP Q19'},
+  /*64 */ {ritmo:'revisao', titulo:'Reta final 11 — Neuroinfecção + tóxico-metabólicas', foco:'Plano 25–26, 29 + Módulo E · UNIFESP Q25, Q26, Q30'},
+  /*65 */ {ritmo:'revisao', titulo:'Reta final 12 — Semiologia + neurogenética', foco:'Plano 1–3 + Módulo D · UNIFESP Q15, Q19, Q21–Q24'},
+  // ── Fase 2: simulados + 1ª fase (julho)
+  /*66 */ {ritmo:'revisao', titulo:'Simulado 1',                   foco:'Prova de Título 2025 completa (102 q), cronometrada'},
+  /*67 */ {ritmo:'revisao', titulo:'Correção do simulado 1',       foco:'Cada erro → capítulo ABN + flashcard · reordenar semanas seguintes'},
+  /*68 */ {ritmo:'revisao', titulo:'Simulado 2',                   foco:'Provas de Título de anos anteriores + R+ UNIFESP/USP'},
+  /*69 */ {ritmo:'revisao', titulo:'Lacunas 2',                    foco:'Áreas com < 70% de acerto nos simulados'},
+  /*70 */ {ritmo:'revisao', titulo:'Simulado 3 + atualizações',    foco:'Diretrizes AAN/AHA/ABN publicadas 2026–2028'},
+  /*71 */ {ritmo:'revisao', titulo:'Reta final da 1ª fase',        foco:'Flashcards de alto rendimento · sono regular'},
+  /*72 */ {ritmo:'pausa',   titulo:'Janela da 1ª fase (jul · data no edital)', foco:'Prova teórica online · sem conteúdo novo'},
+  /*73 */ {ritmo:'pausa',   titulo:'Descanso pós-1ª fase',         foco:'Livre'},
+  // ── Fase 3: 2ª fase (multimídia + prática presencial em SP)
+  /*74 */ {ritmo:'revisao', titulo:'2ª fase 1 — Multimídia: neuroimagem I',  foco:'Plano 1 S5, Plano 4 S5, Plano 15 S4 · padrões de RM/TC (AVC, desmielinizantes, tumores)'},
+  /*75 */ {ritmo:'revisao', titulo:'2ª fase 2 — Multimídia: neuroimagem II', foco:'Leucodistrofias, metabólicas, infecções, medula (Módulo D, Plano 25–26)'},
+  /*76 */ {ritmo:'revisao', titulo:'2ª fase 3 — Multimídia: vídeos de movimento', foco:'Plano 3 S1 + Módulo C S5 · tremor, distonia, coreia, mioclonia, tiques, funcional'},
+  /*77 */ {ritmo:'revisao', titulo:'2ª fase 4 — Multimídia: EEG e ENMG',    foco:'Traçados do eletivo · Plano 8 S4, Plano 10 S4 · Módulo B'},
+  /*78 */ {ritmo:'revisao', titulo:'2ª fase 5 — Prática: exame neurológico', foco:'Plano 1 S2 · roteiro completo cronometrado'},
+  /*79 */ {ritmo:'revisao', titulo:'2ª fase 6 — Prática: nervos cranianos e neuro-otologia', foco:'Plano 2 S1–S3, Plano 28 S2–S3 · pupila, motricidade ocular, HINTS, Dix-Hallpike'},
+  /*80 */ {ritmo:'revisao', titulo:'2ª fase 7 — Prática: coma, ME e cognição', foco:'Plano 2 S4–S5, Plano 7 S4, Plano 22 S4 (MoCA/MEEM)'},
+  /*81 */ {ritmo:'revisao', titulo:'2ª fase 8 — Simulado prático',          foco:'Formato OSCE com colega/preceptor: caso + exame + discussão'},
+  /*82 */ {ritmo:'pausa',   titulo:'Janela da 2ª fase (set · data no edital)', foco:'Multimídia + prática presencial em São Paulo'},
+  /*83 */ {ritmo:'pausa',   titulo:'Aguardar resultado (~início out)',     foco:'Descanso'},
+];
+
+const CAL = CAL_RAW.map((c, i) => {
+  const t0 = R3_START + 7 * i * DAY, t1 = t0 + 6 * DAY;
+  const stages = STAGES.filter(s => s.t0 <= t1 && s.t1 >= t0);
+  const ov = s => (Math.min(s.t1, t1) - Math.max(s.t0, t0)) / DAY + 1;
+  const stage = stages.slice().sort((a, b) => ov(b) - ov(a))[0];
+  return Object.assign({}, c, {cw: i + 1, t0, t1, stages, stage, ritmo: (c.plan || c.mod) ? 'normal' : c.ritmo});
+});
+const NCW = CAL.length, R3_WEEKS = 53;
+const WEEK_BY_NUM = {}; WEEKS_DATA.forEach(w => { WEEK_BY_NUM[w.num] = w; });
+const PLAN_TO_CAL = {}; CAL.forEach(c => { if (c.plan) PLAN_TO_CAL[c.plan] = c; if (c.mod) PLAN_TO_CAL[c.mod] = c; });
+const cwOf = t => Math.floor((t - R3_START) / DAY / 7) + 1;
+const CURRENT_CW = (todayT >= R3_START && todayT <= PLAN_END) ? cwOf(todayT) : null;
+const alvoLabel = a => typeof a === 'number' ? `Plano ${a}` : `Módulo ${MODULES[a].letra}`;
+const rplusFor = key => RPLUS.filter(q => q.alvo === key);
+
+const MARCOS = [
+  {nome:'Início R3',               ini:'2027-03-01', fim:'2027-03-01', row:0, cor:'#8A95A8'},
+  {nome:'Inscrições R+ (~out)',     ini:'2027-10-01', fim:'2027-10-31', row:0, cor:'#F5C87A'},
+  {nome:'R+ UNIFESP ~fim nov',      ini:'2027-11-22', fim:'2027-11-28', row:1, cor:'#E05C5C'},
+  {nome:'R+ USP ~início dez',       ini:'2027-11-29', fim:'2027-12-12', row:0, cor:'#E05C5C'},
+  {nome:'Fim R3',                   ini:'2028-02-29', fim:'2028-02-29', row:1, cor:'#B8A4E8'},
+  {nome:'Edital Título (mar–abr)',  ini:'2028-03-01', fim:'2028-04-30', row:0, cor:'#B8A4E8'},
+  {nome:'Inscrições Título (abr–mai)', ini:'2028-04-01', fim:'2028-05-31', row:2, cor:'#F5C87A'},
+  {nome:'1ª fase Título (jul)',     ini:'2028-07-01', fim:'2028-07-31', row:0, cor:'#E05C5C'},
+  {nome:'2ª fase Título (set)',     ini:'2028-09-01', fim:'2028-09-30', row:1, cor:'#E05C5C'},
+  {nome:'Resultado (~out)',         ini:'2028-10-01', fim:'2028-10-01', row:2, cor:'#86D4AB', end:true},
+];
+
+// armazenamento seguro (localStorage pode falhar)
+const MEM = {};
+const store = {
+  get(k) { try { return JSON.parse(localStorage.getItem(k) || '{}'); } catch (e) { return MEM[k] || {}; } },
+  set(k, v) { MEM[k] = v; try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
+};
+
+const chip = (txt, cor) => `<span class="stage-chip" style="color:${cor};border-color:${cor}55;background:${cor}18">${txt}</span>`;
+const stageChip = s => chip(s.curto, s.cor);
+const ritmoChip = r => `<span class="ritmo-chip" style="color:${RITMO[r].cor};border-color:${RITMO[r].cor}55;background:${RITMO[r].cor}18">${RITMO[r].icon} ${RITMO[r].nome}</span>`;
+const dateLine = c => `
+  <div class="week-date">
+    <span>📅 ${fmt(c.t0)}–${fmtY(c.t1)}</span><span class="dot">·</span>
+    <span>${c.cw <= R3_WEEKS ? `Sem. ${c.cw}/53 do R3` : `Sem. ${c.cw} · pós-R3`}</span><span class="dot">·</span>
+    ${c.stages.map(stageChip).join('<span class="dot">→</span>')}
+    ${c.ritmo !== 'normal' ? ritmoChip(c.ritmo) : ''}
+    ${c.mod ? chip('Módulo novo', BLOCK_META.modulo.cor) : ''}
+    ${c.nota ? `<span class="wk-nota">${c.nota}</span>` : ''}
+  </div>`;
+const rplusLine = key => {
+  const qs = rplusFor(key);
+  if (!qs.length) return '';
+  const g = p => qs.filter(q => q.p === p).map(q => 'Q' + q.n);
+  const parts = ['U', 'S'].filter(p => g(p).length).map(p => `${PROVA_NOME[p]} ${g(p).join(', ')}`);
+  return `<div class="week-rplus">R+ relacionadas: ${parts.join(' · ')}</div>`;
+};
+
+// ═══════════ SEMANA A SEMANA ═══════════
+function sessionsTable(week, provaLabel) {
+  return `
       <div class="week-sessions">
         <div class="session-row header-row">
           <div class="sc">Sessão</div>
           <div class="sc">Foco (30 min)</div>
           <div class="sc">ABN</div>
           <div class="sc">AAN 2026</div>
-          <div class="sc">Prova 2025</div>
+          <div class="sc">${provaLabel}</div>
         </div>
         ${week.sessions.map(s => `
           <div class="session-row">
@@ -1126,71 +1596,359 @@ function renderWeeks() {
             <div class="sc sc-prova">${s.prova}</div>
           </div>
         `).join('')}
+      </div>`;
+}
+
+function renderWeeks() {
+  const container = document.getElementById('weeks-list');
+  container.innerHTML = '';
+
+  CAL.forEach(c => {
+    const div = document.createElement('div');
+    div.dataset.stages = c.stages.map(s => s.id).join(' ');
+    div.dataset.cw = c.cw;
+    if (c.cw === CURRENT_CW) div.classList.add('current');
+
+    if (!c.plan && !c.mod) {
+      const r = RITMO[c.ritmo];
+      div.classList.add('week-item', 'free');
+      div.id = `cal-${c.cw}`;
+      div.dataset.block = '_free';
+      div.innerHTML = `
+        <div class="week-header">
+          <div class="week-num-badge" style="background:${r.cor}22;color:${r.cor};border:1px dashed ${r.cor}66">${r.icon}</div>
+          <div class="week-info">
+            <div class="week-title">${c.titulo}</div>
+            <div class="week-sub">${c.foco}</div>
+            ${dateLine(c)}
+          </div>
+          <div class="week-meta"><span class="badge" style="background:${r.cor}22;color:${r.cor};border:1px solid ${r.cor}55">${r.desc}</span></div>
+        </div>`;
+      container.appendChild(div);
+      return;
+    }
+
+    const isMod = !!c.mod;
+    const week = isMod ? MODULES[c.mod] : WEEK_BY_NUM[c.plan];
+    const key = isMod ? c.mod : c.plan;
+    const domId = isMod ? `mod-${c.mod}` : `week-${week.num}`;
+    div.classList.add('week-item');
+    if (isMod) div.classList.add('module');
+    div.dataset.block = week.id;
+    div.id = domId;
+
+    const prova_qs = week.sessions.filter(s => s.prova && s.prova !== '—').length;
+
+    div.innerHTML = `
+      <div class="week-header" onclick="toggleEl('${domId}')">
+        <div class="week-num-badge" style="background:${week.color}22;color:${week.color};border:1px solid ${week.color}44">
+          ${isMod ? week.letra : week.num}
+        </div>
+        <div class="week-info">
+          <div class="week-title">${week.title}</div>
+          <div class="week-sub">${week.sub}</div>
+          ${dateLine(c)}
+          ${rplusLine(key)}
+        </div>
+        <div class="week-meta">
+          ${prova_qs > 0 ? `<span class="badge" style="background:rgba(139,111,212,0.15);color:#B8A4E8;border:1px solid rgba(139,111,212,0.3)">${prova_qs} sessões c/ prova</span>` : ''}
+          <span class="badge badge-teal">5 sessões</span>
+        </div>
+        <div class="week-chevron">▼</div>
       </div>
+      ${sessionsTable(week, isMod ? 'Provas' : 'Prova 2025')}
     `;
     container.appendChild(div);
   });
 }
 
-function toggleWeek(num) {
-  const el = document.getElementById(`week-${num}`);
-  el.classList.toggle('open');
-}
+function toggleEl(id) { document.getElementById(id).classList.toggle('open'); }
+function toggleWeek(num) { toggleEl(`week-${num}`); }
 
-function filterWeeks(block, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+// ═══════════ FILTROS (bloco × estágio) ═══════════
+let curBlock = 'all', curStage = 'all';
+function setActive(btn) {
+  if (!btn) return;
+  btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-
+}
+function applyFilters() {
+  let n = 0, nPlan = 0;
   document.querySelectorAll('.week-item').forEach(item => {
-    if (block === 'all' || item.dataset.block === block) {
-      item.style.display = '';
-    } else {
-      item.style.display = 'none';
-    }
+    const okB = curBlock === 'all' || item.dataset.block === curBlock;
+    const okS = curStage === 'all' || item.dataset.stages.split(' ').includes(curStage);
+    const show = okB && okS;
+    item.style.display = show ? '' : 'none';
+    if (show) { n++; if (item.dataset.block !== '_free') nPlan++; }
+  });
+  const el = document.getElementById('filter-count');
+  if (el) el.textContent = n === 0
+    ? 'Nenhuma semana com essa combinação de bloco × estágio.'
+    : `${n} semana(s) do calendário · ${nPlan} com conteúdo (plano ou módulo)`;
+}
+function filterWeeks(block, btn) { curBlock = block; setActive(btn); applyFilters(); }
+function filterStage(stage, btn) { curStage = stage; setActive(btn); applyFilters(); }
+
+function renderStageFilter() {
+  const bar = document.getElementById('stage-filter');
+  STAGES.forEach(s => {
+    const b = document.createElement('button');
+    b.className = 'filter-btn';
+    b.setAttribute('onclick', `filterStage('${s.id}',this)`);
+    b.innerHTML = `<span style="color:${s.cor}">●</span> ${s.curto} · ${fmt(s.t0)}`;
+    b.title = `${s.nome} · ${fmtY(s.t0)}–${fmtY(s.t1)}`;
+    bar.appendChild(b);
   });
 }
 
+const allBtn = sel => document.querySelector(`${sel} .filter-btn[onclick*="'all'"]`);
 function scrollToBlock(id) {
-  filterWeeks(id, document.querySelector(`.filter-btn[onclick*="${id}"]`));
+  filterStage('all', allBtn('#stage-filter'));
+  filterWeeks(id, document.querySelector(`#block-filter .filter-btn[onclick*="'${id}'"]`));
   document.getElementById('weeks-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+function scrollToStage(id) {
+  filterWeeks('all', allBtn('#block-filter'));
+  filterStage(id, document.querySelector(`#stage-filter .filter-btn[onclick*="'${id}'"]`));
+  document.getElementById('weeks-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function domIdOf(c) { return c.plan ? `week-${c.plan}` : c.mod ? `mod-${c.mod}` : `cal-${c.cw}`; }
+function goToCal(cw) {
+  filterWeeks('all', allBtn('#block-filter'));
+  filterStage('all', allBtn('#stage-filter'));
+  const c = CAL[cw - 1];
+  const el = document.getElementById(domIdOf(c));
+  if (c.plan || c.mod) el.classList.add('open');
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+function goToKey(key) { const c = PLAN_TO_CAL[key]; if (c) goToCal(c.cw); }
+function goToCurrent() {
+  if (CURRENT_CW) return goToCal(CURRENT_CW);
+  goToCal(todayT < R3_START ? 1 : NCW);
+}
 
+// ═══════════ PREVALÊNCIA (3 provas) ═══════════
+function renderPrevalence() {
+  const tot = {t: 102, u: 30, s: 20};
+  const cell = (n, base, cor) => n
+    ? `<div class="pv-n">${n} <span>${Math.round(n / base * 100)}%</span></div><div class="pv-bar"><i style="width:${Math.min(100, n / base * 100 * 3)}%;background:${cor}"></i></div>`
+    : `<div class="pv-n pv-zero">—</div>`;
+  const prioCor = {A:'#86D4AB', B:'#F5C87A', C:'#8A95A8'};
+  document.getElementById('prev-table').innerHTML = `
+    <thead><tr><th>Área</th><th>Título 2025<br><span>102 q</span></th><th>R+ UNIFESP 2025<br><span>30 q</span></th><th>R+ USP Neurofisio<br><span>20 q</span></th><th>Total<br><span>152 q</span></th><th>Prior.</th><th>Onde no plano</th></tr></thead>
+    <tbody>${AREAS.map(a => `
+      <tr>
+        <td><i class="pv-dot" style="background:${a.cor}"></i>${a.nome}</td>
+        <td>${cell(a.t, tot.t, a.cor)}</td>
+        <td>${cell(a.u, tot.u, a.cor)}</td>
+        <td>${cell(a.s, tot.s, a.cor)}</td>
+        <td class="pv-tot">${a.tot}</td>
+        <td><span class="pv-prio" style="color:${prioCor[a.prio]};border-color:${prioCor[a.prio]}66">${a.prio}</span></td>
+        <td class="pv-onde">${a.onde}</td>
+      </tr>`).join('')}
+    </tbody>`;
+
+  const card = (p, titulo, cor) => `
+    <div class="append-card">
+      <div class="append-card-head" style="color:${cor}">${titulo}</div>
+      ${RPLUS.filter(q => q.p === p).map(q => {
+        const c = PLAN_TO_CAL[q.alvo];
+        return `<div class="append-row rp-row" onclick="goToKey(${typeof q.alvo === 'number' ? q.alvo : `'${q.alvo}'`})">
+          <span class="append-code">Q${q.n}</span>
+          <span class="append-name">${q.tema}${q.gab ? ` <span class="rp-gab">gab. ${q.gab}</span>` : ''}</span>
+          <span class="append-week">${alvoLabel(q.alvo)} · ${mesAno(c.t0)}</span>
+        </div>`;
+      }).join('')}
+    </div>`;
+  document.getElementById('rplus-lists').innerHTML =
+    card('U', 'R+ UNIFESP 2025 · Neurologia Ano Opcional (cód. 1547) · gabarito oficial', '#E05C5C') +
+    card('S', 'R+ USP 2026 · Neurofisiologia Clínica (A22) · gabarito não enviado', '#38BDF8');
+}
+
+// ═══════════ LINHA DO TEMPO ═══════════
+function renderTimeline() {
+  const h = [];
+  const col = cw => cw + 1;
+  ['Mês','Estágio','Bloco','Ritmo','Marcos','',''].forEach((l, i) =>
+    h.push(`<div class="tl-rowlabel" style="grid-row:${i + 1}">${l}</div>`));
+  // meses
+  let seg = null;
+  const pushSeg = () => seg && h.push(`<div class="tl-month" style="grid-row:1;grid-column:${col(seg.a)}/${col(seg.b) + 1}">${seg.m}</div>`);
+  CAL.forEach(c => {
+    const m = mesAno(c.t0);
+    if (!seg || seg.m !== m) { pushSeg(); seg = {m, a: c.cw, b: c.cw}; } else seg.b = c.cw;
+  });
+  pushSeg();
+  // estágios
+  const segs = [];
+  CAL.forEach(c => {
+    const last = segs[segs.length - 1];
+    if (last && last.s === c.stage) last.b = c.cw; else segs.push({s: c.stage, a: c.cw, b: c.cw});
+  });
+  segs.forEach(g => h.push(`<div class="tl-stage" onclick="scrollToStage('${g.s.id}')" title="${g.s.nome} · ${fmtY(g.s.t0)}–${fmtY(g.s.t1)}"
+    style="grid-row:2;grid-column:${col(g.a)}/${col(g.b) + 1};background:${g.s.cor}22;border-color:${g.s.cor};color:${g.s.cor}">${g.s.curto}</div>`));
+  // blocos + ritmo
+  CAL.forEach(c => {
+    const tip = `${fmt(c.t0)}–${fmtY(c.t1)} · ${c.stages.map(s => s.curto).join('→')} · `;
+    if (c.plan) {
+      const w = WEEK_BY_NUM[c.plan], bm = BLOCK_META[w.id];
+      h.push(`<div class="tl-cell" onclick="goToCal(${c.cw})" title="${tip}Plano ${c.plan}: ${w.title.replace(/"/g, '')}"
+        style="grid-row:3;grid-column:${col(c.cw)};background:${bm.cor}">${c.plan}</div>`);
+    } else if (c.mod) {
+      const m = MODULES[c.mod];
+      h.push(`<div class="tl-cell" onclick="goToCal(${c.cw})" title="${tip}${m.title}"
+        style="grid-row:3;grid-column:${col(c.cw)};background:${m.color}">${m.letra}</div>`);
+    } else {
+      h.push(`<div class="tl-cell free-${c.ritmo}" onclick="goToCal(${c.cw})" title="${tip}${c.titulo}"
+        style="grid-row:3;grid-column:${col(c.cw)}">${RITMO[c.ritmo].icon}</div>`);
+    }
+    h.push(`<div class="tl-ritmo" title="${RITMO[c.ritmo].nome}" style="grid-row:4;grid-column:${col(c.cw)};background:${RITMO[c.ritmo].cor}"></div>`);
+  });
+  // marcos
+  MARCOS.forEach(m => {
+    const a = cwOf(ymd(m.ini)), b = cwOf(ymd(m.fim));
+    h.push(`<div class="tl-mark ${m.end ? 'end' : ''}" title="${m.nome} · ${fmtY(ymd(m.ini))}${m.fim !== m.ini ? '–' + fmtY(ymd(m.fim)) : ''} (estimativa)"
+      style="grid-row:${5 + m.row};grid-column:${m.end ? col(b) - 8 : col(a)}/${col(b) + 1};color:${m.cor};border-color:${m.cor};background:${m.cor}14">▲ ${m.nome}</div>`);
+  });
+  h.push(`<div class="tl-r3end" title="Fim do R3 (29/02/2028)" style="grid-column:${col(R3_WEEKS + 1)}"></div>`);
+  if (CURRENT_CW) h.push(`<div class="tl-today" title="Hoje" style="grid-column:${col(CURRENT_CW)}"></div>`);
+  document.getElementById('tl').innerHTML = h.join('');
+
+  const lg = Object.values(BLOCK_META).map(b => `<span><i style="background:${b.cor}"></i>${b.nome}</span>`)
+    .concat(Object.values(RITMO).map(r => `<span><i style="background:${r.cor}"></i>${r.icon} ${r.nome} (${r.desc})</span>`));
+  document.getElementById('tl-legend').innerHTML = lg.join('');
+
+  document.getElementById('tl-stages').innerHTML = STAGES.map(s => {
+    const ws = CAL.filter(c => c.stage === s);
+    const cont = ws.filter(c => c.plan || c.mod).map(c => c.plan ? c.plan : 'Mód. ' + MODULES[c.mod].letra);
+    const livres = ws.filter(c => !c.plan && !c.mod).length;
+    return `<div class="tl-stagecard" onclick="scrollToStage('${s.id}')" style="border-left:3px solid ${s.cor}">
+      <b style="color:${s.cor}">${s.nome}</b>
+      <div class="sub">${fmtY(s.t0)}–${fmtY(s.t1)} · ${ws.length} sem.</div>
+      <div class="blk">${s.tema}</div>
+      <div class="sub">${cont.length ? 'Plano ' + cont.join(', ') : 'sem conteúdo novo'}${livres ? ` · ${livres} sem. livre(s)/revisão` : ''}</div>
+    </div>`;
+  }).join('');
+}
+
+// ═══════════ RASTREADOR POR DATA ═══════════
 function renderWeekChecks() {
   const container = document.getElementById('week-checks');
-  const saved = JSON.parse(localStorage.getItem('neuro-progress') || '{}');
-  container.innerHTML = '';
-  for (let i = 1; i <= 30; i++) {
-    const done = saved[i] || false;
-    const cb = document.createElement('div');
-    cb.className = `week-check ${done ? 'done' : ''}`;
-    cb.title = `Semana ${i}`;
-    cb.textContent = done ? '✓' : '';
-    cb.dataset.week = i;
-    cb.onclick = () => toggleCheck(i);
-    container.appendChild(cb);
-  }
+  const saved = store.get('neuro-progress');      // chave original: nº da semana do plano
+  const extra = store.get('neuro-progress-cal');  // módulos e semanas livres: nº da semana do calendário
+  const months = [];
+  CAL.forEach(c => {
+    const m = mesAno(c.t0);
+    if (!months.length || months[months.length - 1].m !== m) months.push({m, cs: []});
+    months[months.length - 1].cs.push(c);
+  });
+  container.innerHTML = months.map(g => `
+    <div class="cal-month">
+      <div class="cal-mlabel">${g.m}</div>
+      <div class="cal-cells">${g.cs.map(c => {
+        const done = c.plan ? !!saved[c.plan] : !!extra[c.cw];
+        const r = RITMO[c.ritmo];
+        const lab = c.plan ? `P${c.plan}` : c.mod ? `M${MODULES[c.mod].letra}` : r.icon;
+        const nome = c.plan ? 'Plano ' + c.plan + ': ' + WEEK_BY_NUM[c.plan].title : c.mod ? MODULES[c.mod].title : c.titulo;
+        const tip = `${fmt(c.t0)}–${fmtY(c.t1)} · ${c.stages.map(s => s.curto).join('→')} · ${nome} · ${r.nome}`;
+        return `<div class="cal-cell ${done ? 'done' : ''} ${c.cw === CURRENT_CW ? 'current' : ''} ${c.cw > R3_WEEKS ? 'post' : ''}" style="border-left-color:${r.cor}"
+          title="${tip.replace(/"/g, '')}" onclick="toggleCal(${c.cw})">
+          <div class="cal-d">${fmt(c.t0)}</div><div class="cal-p"><span style="color:${c.stage.cor}">${lab}</span></div>
+        </div>`;
+      }).join('')}</div>
+    </div>`).join('');
   updateProgress();
 }
 
+function toggleCal(cw) {
+  const c = CAL[cw - 1];
+  if (c.plan) return toggleCheck(c.plan);
+  const extra = store.get('neuro-progress-cal');
+  extra[cw] = !extra[cw];
+  store.set('neuro-progress-cal', extra);
+  renderWeekChecks();
+}
+
 function toggleCheck(weekNum) {
-  const saved = JSON.parse(localStorage.getItem('neuro-progress') || '{}');
+  const saved = store.get('neuro-progress');
   saved[weekNum] = !saved[weekNum];
-  localStorage.setItem('neuro-progress', JSON.stringify(saved));
+  store.set('neuro-progress', saved);
   renderWeekChecks();
 }
 
 function updateProgress() {
-  const saved = JSON.parse(localStorage.getItem('neuro-progress') || '{}');
-  const done = Object.values(saved).filter(Boolean).length;
+  const saved = store.get('neuro-progress');
+  const extra = store.get('neuro-progress-cal');
+  const done = Object.keys(saved).filter(k => saved[k] && WEEK_BY_NUM[k]).length;
+  const modsDone = CAL.filter(c => c.mod && extra[c.cw]).length;
   const pct = Math.round((done / 30) * 100);
+  const expected = CAL.filter(c => c.plan && c.t1 < todayT).length;
+  const delta = done - expected;
   document.getElementById('done-count').textContent = done;
   document.getElementById('remain-count').textContent = 30 - done;
   document.getElementById('pct-count').textContent = pct + '%';
   document.getElementById('main-bar').style.width = pct + '%';
+  document.getElementById('expected-count').textContent = expected;
+  document.getElementById('mods-count').textContent = modsDone + '/5';
+  const dEl = document.getElementById('delta-count');
+  dEl.textContent = (delta > 0 ? '+' : '') + delta;
+  dEl.style.color = delta < 0 ? 'var(--red)' : delta > 0 ? 'var(--green)' : 'var(--text2)';
+
+  const st = document.getElementById('today-status');
+  if (todayT < R3_START) {
+    const dias = Math.round((R3_START - todayT) / DAY);
+    st.innerHTML = `R3 começa em <b>${dias} dias</b> (01/03/2027) · 1º estágio: <b>Pronto-Socorro</b> · 1ª semana: <b>Plano 4 — AVC I</b> · 1ª fase do Título: <b>jul/2028</b>`;
+  } else if (CURRENT_CW) {
+    const c = CAL[CURRENT_CW - 1];
+    const prox = MARCOS.filter(m => ymd(m.ini) >= todayT)[0];
+    const nome = c.plan ? `<b>Plano ${c.plan}</b> — ${WEEK_BY_NUM[c.plan].title}` : c.mod ? `<b>${MODULES[c.mod].title}</b>` : `<b>${c.titulo}</b> (${RITMO[c.ritmo].nome.toLowerCase()})`;
+    st.innerHTML = `Hoje: <b>semana ${c.cw}</b> (${fmt(c.t0)}–${fmtY(c.t1)}) · <b style="color:${c.stage.cor}">${c.stage.nome}</b> · ${nome}`
+      + (prox ? ` · próximo marco: <b>${prox.nome}</b> em ${Math.round((ymd(prox.ini) - todayT) / DAY)} dias` : '')
+      + (delta < 0 ? ` · <span style="color:var(--red)">${-delta} semana(s) do plano atrás</span>` : '');
+  } else {
+    st.innerHTML = `Plano encerrado · resultado do Título: <b>~início out/2028</b>`;
+  }
 }
 
+// ═══════════ BLOCOS E APÊNDICE: DATAS ═══════════
+function annotateBlocks() {
+  document.querySelectorAll('.block-card').forEach(card => {
+    const m = (card.getAttribute('onclick') || '').match(/'(\w+)'/);
+    if (!m) return;
+    const cs = CAL.filter(c => c.plan && WEEK_BY_NUM[c.plan].id === m[1]);
+    const segs = [];
+    cs.forEach(c => {
+      const l = segs[segs.length - 1];
+      if (l && l.b.cw === c.cw - 1) { l.b = c; if (!l.st.includes(c.stage.curto)) l.st.push(c.stage.curto); }
+      else segs.push({a: c, b: c, st: c.stages.map(s => s.curto)});
+    });
+    const el = document.createElement('div');
+    el.className = 'block-when';
+    el.textContent = '📅 ' + segs.map(g => `${fmt(g.a.t0)}–${fmtY(g.b.t1)} · ${g.st.join('→')}`).join('  |  ');
+    card.insertBefore(el, card.querySelector('.block-tags'));
+  });
+}
+function annotateAppendix() {
+  document.querySelectorAll('.append-week').forEach(el => {
+    if (el.closest('#rplus-lists')) return;
+    const nums = (el.textContent.match(/\d+/g) || []).map(Number);
+    if (!nums.length) return;
+    const ms = [];
+    for (let n = Math.min(...nums); n <= Math.max(...nums); n++) {
+      const c = PLAN_TO_CAL[n]; if (c && !ms.includes(mesAno(c.t0))) ms.push(mesAno(c.t0));
+    }
+    el.textContent += ' · ' + ms.join('/');
+  });
+}
+
+renderPrevalence();
+renderTimeline();
+renderStageFilter();
 renderWeeks();
+applyFilters();
 renderWeekChecks();
+annotateBlocks();
+annotateAppendix();
 </script>
 </body>
 </html>
